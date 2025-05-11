@@ -12,7 +12,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/styles/_global.scss";`
+        // This is to load your global variables into every component automatically
+        additionalData: `@use "@/styles/_global.scss" as *;`
       }
     }
   }
