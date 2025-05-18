@@ -13,7 +13,8 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // This is to load your global variables into every component automatically
-        additionalData: `@use "@/styles/_global.scss" as *;`
+        additionalData: `@use "@/styles/_global.scss" as *;`,
+        quietDeps: true // Suppress deprecation warnings in the console
       }
     }
   }

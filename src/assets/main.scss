@@ -1,7 +1,16 @@
-// @import "bootstrap/scss/bootstrap";
-
 body {
-  font-family: sans-serif;
-  color: #912f2f;
-  background-color: #f8f9fa;
+    background-color: $background;
+    font-family: $text-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $title-font;
+    color: $logo-color;
+}
+
+p {
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
