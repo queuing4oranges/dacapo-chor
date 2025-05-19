@@ -5,6 +5,6 @@
 
 <template>
 	<Header />
-	<Hero />
+	<router-view />
 </template>
 
