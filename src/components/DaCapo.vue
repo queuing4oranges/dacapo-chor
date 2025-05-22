@@ -18,8 +18,8 @@
         <HeroTitle />
         <div class="h-100 mt-5 d-flex justify-content-center align-items-center">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
-                <img :src="img.src" :alt="img.alt" class="link-img" />
-                <div class="w-100 img-label">{{ img.alt }}</div>
+                <img :src="img.src" :alt="img.alt" class="link-img" @click="console.log('hello world')"/>
+                <div class="w-100 mb-0 img-label">{{ img.alt }}</div>
             </div>
         </div>
     </div>
@@ -32,6 +32,16 @@
         overflow: hidden;
         text-align: center;
 
+        &:hover .link-img {
+            filter: grayscale(0);
+            transform: scale(1.1);
+            z-index: 2;
+        }
+
+        &:hover .img-label {
+            color: $accent;
+        }
+
         .link-img {
             display: block;
             filter: grayscale(100%);
@@ -40,21 +50,15 @@
             z-index: 1;
             width: 100%;
             height: auto;
-
-            &:hover {
-                filter: grayscale(0);
-                transform: scale(1.1);
-                z-index: 2;
-            }
         }
 
         .img-label {
             position: absolute;
-            top: 75%;
+            bottom: 0;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            background: rgba(75, 74, 74, 0.6);
+            background: rgba(36, 36, 36, 0.8);
             padding: 0.8rem 1.2rem;
             font-weight: bold;
             font-size: 1.8rem;
