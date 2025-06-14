@@ -6,10 +6,10 @@
     import link4 from "@/assets/link4.png";
 
     const images = [
-        { src: link1, alt: 'Über uns' },
-        { src: link2, alt: 'Repertoire & Auftritte' },
-        { src: link3, alt: 'Kontakt' },
-        { src: link4, alt: 'Mitglieder gesucht' },
+        { src: link1, alt: 'Über uns', linkto: '/über-uns' },
+        { src: link2, alt: 'Repertoire & Auftritte', linkto: '/repertoire' },
+        { src: link3, alt: 'Kontakt', linkto: '/kontakt'  },
+        { src: link4, alt: 'Mitglieder gesucht', linkto: '/mitglieder-gesucht' },
     ];
 </script>
 
@@ -18,7 +18,14 @@
         <HeroTitle />
         <div class="h-100 mt-5 d-flex justify-content-center align-items-center">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
-                <img :src="img.src" :alt="img.alt" class="link-img" @click="console.log('hello world')"/>
+                <router-link :to="img.linkto" >
+                    <img
+                        :src="img.src"
+                        :alt="img.alt"
+                        class="link-img"
+                        @click="console.log('hello world')"
+                    />
+                </router-link>
                 <div class="w-100 mb-0 img-label">{{ img.alt }}</div>
             </div>
         </div>
