@@ -4,7 +4,7 @@
 
 <template>
     <header class="header d-flex justify-content-between p-2 mx-auto">
-        <router-link to="/" class="text-decoration-none">
+        <router-link to="/dacapo" class="text-decoration-none">
             <span class="d-flex flex-column p-1 note-btn" title="Home">
                 <MusicalNoteButton height="40" width="40" />
                 Home
