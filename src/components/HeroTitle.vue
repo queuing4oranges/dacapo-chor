@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="d-flex align-items-center mb-5">
+    <div class="d-flex align-items-center mb-2">
         <span class="mx-3">
             <img :src="logo" alt="Logo" class="logo-img">
         </span>

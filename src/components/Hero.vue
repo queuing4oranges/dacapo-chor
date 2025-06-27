@@ -1,8 +1,3 @@
-<script setup>
-    import group from "@/assets/group-pic.png";
-    import HeroTitle from "./HeroTitle.vue";
-</script>
-
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
@@ -13,6 +8,11 @@
         </div>
     </div>
 </template>
+
+<script setup>
+    import group from "@/assets/group-pic.png";
+    import HeroTitle from "./HeroTitle.vue";
+</script>
 
 <style lang="scss" scoped>
     .group-img {

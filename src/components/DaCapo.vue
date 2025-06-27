@@ -1,9 +1,9 @@
 <script setup>
     import HeroTitle from './HeroTitle.vue';
-    import link1 from "@/assets/link1.png";
-    import link2 from "@/assets/link2.png";
-    import link3 from "@/assets/link3.png";
-    import link4 from "@/assets/link4.png";
+    import link1 from "@/assets/piano.png";
+    import link2 from "@/assets/noten.png";
+    import link3 from "@/assets/tuer.png";
+    import link4 from "@/assets/haus.png";
 
     const images = [
         { src: link1, alt: 'Über uns', linkto: '/über-uns' },
@@ -23,7 +23,6 @@
                         :src="img.src"
                         :alt="img.alt"
                         class="link-img"
-                        @click="console.log('hello world')"
                     />
                 </router-link>
                 <div class="w-100 mb-0 img-label">{{ img.alt }}</div>
