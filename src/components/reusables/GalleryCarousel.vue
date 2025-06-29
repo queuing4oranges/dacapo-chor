@@ -1,18 +1,18 @@
 <template>
     <div class="carousel">
         <div class="inner" :style="{ transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)` }">
-            <div
-                class="card" 
-                v-for="(card, index) in cards" 
-                :key="index"
-            >
+            <div class="card" v-for="(card, index) in cards" :key="index">
                 <img :src="card" :alt="'Slide ' + (index + 1)" />
             </div>
         </div>
     </div>
     <div class="controls">
-        <button @click="prev" :disabled="isAtStart">prev</button>
-        <button @click="next" :disabled="isAtEnd">next</button>
+        <button @click="prev" :disabled="isAtStart">
+            <i class="bi bi-chevron-double-left"></i>
+        </button>
+        <button @click="next" :disabled="isAtEnd">
+            <i class="bi bi-chevron-double-right"></i>
+        </button>
     </div>
 </template>
 
@@ -28,7 +28,7 @@ import img8 from "@/assets/gallery8.png";
 
 
 // Reactive array of slide URLs
-const cards = [img1, img2, img3, img4, img5, img7, img8];
+const cards = [img1, img2, img7, img3, img5, img4, img8];
 const currentIndex = ref(0);
 const slidesPerView = 3;
 
@@ -48,13 +48,12 @@ const isAtEnd = computed(() => currentIndex.value === maxIndex);
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .carousel {
   width: 90%;
   height: auto;
   overflow: hidden;
   margin: 1rem auto;
-  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -64,8 +63,11 @@ const isAtEnd = computed(() => currentIndex.value === maxIndex);
 }
 
 .card {
-  min-width: 33.3%;
+  min-width: calc(33.3% - 0.6rem);
   height: 100%;
+  border-top-right-radius: 10%;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
 }
 
 .card img {
@@ -77,10 +79,22 @@ const isAtEnd = computed(() => currentIndex.value === maxIndex);
 .controls {
   text-align: center;
   margin-top: 0.5rem;
+  display: flex;
+  width: 10%;
+  justify-content: space-between;
 }
 
 button {
-    color: red;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    color: $accent;
+    border: 0.1rem solid $accent;
+    background-color: transparent;
+
+    &:disabled {
+        opacity: 0.5;
+    }
 }
 
 </style>
