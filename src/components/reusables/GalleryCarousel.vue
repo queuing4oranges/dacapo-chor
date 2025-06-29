@@ -1,7 +1,12 @@
 <template>
     <div class="carousel">
         <div class="inner" :style="{ transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)` }">
-            <div class="card" v-for="(card, index) in cards" :key="index">
+            <div
+                class="gallery-card"
+                :class="{ 'is-center': index === centerIndex }"
+                v-for="(card, index) in cards"
+                :key="index"
+            >
                 <img :src="card" :alt="'Slide ' + (index + 1)" />
             </div>
         </div>
@@ -42,9 +47,10 @@ function next() {
     if (currentIndex.value < maxIndex) currentIndex.value ++
 }
 
-const maxIndex = cards.length - slidesPerView // So there is no empty space next to current index
+const maxIndex = cards.length - slidesPerView // Prevent empty space next to current index
 const isAtStart = computed(() => currentIndex.value === 0);
 const isAtEnd = computed(() => currentIndex.value === maxIndex);
+const centerIndex = computed(() => currentIndex.value + Math.floor(slidesPerView / 2))
 
 </script>
 
@@ -54,7 +60,7 @@ const isAtEnd = computed(() => currentIndex.value === maxIndex);
   height: auto;
   overflow: hidden;
   margin: 1rem auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: $background;
 }
 
 .inner {
@@ -62,25 +68,33 @@ const isAtEnd = computed(() => currentIndex.value === maxIndex);
   transition: transform 0.4s ease;
 }
 
-.card {
+.gallery-card {
   min-width: calc(33.3% - 0.6rem);
   height: 100%;
   border-top-right-radius: 10%;
   margin-left: 0.3rem;
   margin-right: 0.3rem;
+  background-color: $background;
+//   opacity: 0.5;
+
+//   &.is-center {
+//     opacity: 1;
+//   }
 }
 
-.card img {
+.gallery-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .controls {
   text-align: center;
   margin-top: 0.5rem;
   display: flex;
-  width: 10%;
+  width: 7%;
   justify-content: space-between;
 }
 
@@ -94,6 +108,11 @@ button {
 
     &:disabled {
         opacity: 0.5;
+    }
+
+    &:hover {
+        background-color: $accent;
+        color: $logo-color;
     }
 }
 
