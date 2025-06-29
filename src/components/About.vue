@@ -4,7 +4,7 @@
         <div class="h-100 w-75 mt-3 d-flex justify-content-center align-items-start">
             <figure>
                 <img :src="vorstand" alt="Vorstand">
-                <figcaption>Unser Vorstand: v.l.n.r. Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
+                <figcaption>Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
             </figure>
             <span class="px-5 d-flex flex-column align-items-between h-100">
                 <p>
