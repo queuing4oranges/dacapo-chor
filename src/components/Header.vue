@@ -4,12 +4,12 @@
     import MusicalNoteButton from './reusables/MusicalNoteButton.vue';
 
     const route = useRoute();
-    const isNotRoute = computed(() => route.path === '/dacapo')
+    const isNotRoute = computed(() => route.path === '/');
 </script>
 
 <template>
     <header class="header d-flex justify-content-between p-2 mx-auto mb-4">
-        <router-link to="/dacapo" class="text-decoration-none">
+        <router-link to="/" class="text-decoration-none">
             <span class="d-flex flex-column p-1 note-btn" title="Home">
                 <MusicalNoteButton height="40" width="40" />
             </span>

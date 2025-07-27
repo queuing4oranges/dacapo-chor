@@ -16,11 +16,10 @@
                     Ältere
                     oder Menschen mit Behinderung.
                 </p>
-                <span class="d-flex justify-content-center align-items-end img-container">
+                <figure class="d-flex justify-content-center align-items-end img-container">
                     <figcaption>Unser Chorleiter und Vocal Coach: Rico Jank</figcaption>
                     <img :src="Rico" alt="Chorleiter Rico">
-
-                </span>
+                </figure>
             </span>
         </div>
         <div>

@@ -33,7 +33,7 @@ import img8 from "@/assets/gallery8.png";
 
 
 // Reactive array of slide URLs
-const cards = [img1, img2, img7, img3, img5, img4, img8];
+const cards = [img2, img1, img7, img3, img5, img4, img8];
 const currentIndex = ref(0);
 const slidesPerView = 3;
 
