@@ -1,10 +1,10 @@
 <template>
-    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="about-container h-100 d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
-        <div class="h-100 w-75 mt-3 d-flex justify-content-center align-items-start">
-            <figure>
-                <img :src="vorstand" alt="Vorstand">
-                <figcaption>Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
+        <div class="h-100 w-75 mt-5 d-flex justify-content-center align-items-start">
+            <figure class="slide-in-fwd-left">
+                <img :src="vorstand" alt="Vorstand" class="vorstand-img">
+                <figcaption class="mt-1 vorstand-caption">Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
             </figure>
             <span class="px-5 d-flex flex-column align-items-between h-100">
                 <p>
@@ -16,35 +16,47 @@
                     Ältere
                     oder Menschen mit Behinderung.
                 </p>
-                <figure class="d-flex justify-content-center align-items-end img-container">
-                    <figcaption>Unser Chorleiter und Vocal Coach: Rico Jank</figcaption>
-                    <img :src="Rico" alt="Chorleiter Rico">
-                </figure>
+                <p>"da capo" bedeutet übrigens in der Musik so viel wie "noch einmal" oder "von vorne".</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="mt-5">
+                        <p class="mb-1">Hier findet ihr unsere Satzung</p>
+                        <a href="/docs/Vereinssatzung.pdf" target="_blank" rel="noopener" download class="text-decoration-none">
+                            <button class="fs-6 button-52 d-flex align-items-center">
+                                <p class="satzungs-text me-2 mb-0" style="color:black; font-weight:bolder">Satzung</p>
+                                <i class="bi bi-file-pdf"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <figure class="slide-in-fwd-right img-container">
+                        <img :src="Rico" alt="Chorleiter Rico">
+                        <figcaption class="mt-1 d-flex flex-column">
+                            <span>Unser Chorleiter und </span>
+                            <span>Vocal Coach: Rico Jank</span>
+                        </figcaption>
+                    </figure>
+                </div>
             </span>
         </div>
-        <div>
-            <p>
-                Hier findet ihr unsere Satzung
-                <BButton>
-                    <i class="bi bi-file-earmark-music">
-                        <a href="https://www.google.com" target="_blank"></a>
-                    </i>
-                </BButton>
-            </p>
-            <p>"da capo" bedeutet übrigens in der Musik so viel wie "noch einmal" oder "von vorne".</p>
-        </div>
-
     </div>
 </template>
 
 <script setup>
     import HeroTitle from './HeroTitle.vue';
     import vorstand from "@/assets/vorstand.png";
-    import Rico from "@/assets/placeholder.png";
-    import { BButton } from 'bootstrap-vue-next';
+    import Rico from "@/assets/chorleiter.png";
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.about-container {
+    background-image: url('@/assets/bg-no-notes.svg');
+    background-size: cover;
+    background-position: center;
+
+    .vorstand-img {
+        box-shadow: rgba(59, 72, 65, 0.19) 0px 10px 20px, rgba(59, 72, 65, 0.23) 0px 6px 6px;
+        /* transform: rotate(-5deg); */
+    }
+
     strong {
         color: $logo-color;
     }
@@ -52,8 +64,110 @@
     .img-container {
         img {
             width: 200px;
-            border-radius: 50%;
-            border: dotted 0.5rem $accent;
+            box-shadow: rgba(59, 72, 65, 0.19) 0px 10px 20px, rgba(59, 72, 65, 0.23) 0px 6px 6px;
         }
     }
+
+    .button-52 {
+        font-size: 16px;
+        font-weight: 200;
+        letter-spacing: 1px;
+        padding: 13px 20px 13px;
+        outline: 0;
+        border: 1px solid black;
+        cursor: pointer;
+        position: relative;
+        background-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        z-index: 0;
+        overflow: visible;
+    }
+
+    .button-52::after {
+        content: "";
+        border-color: #046b52 2px solid;
+        background-color: #4fc9d2;
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        top: 7px;
+        left: 7px;
+        transition: 0.2s;
+    }
+
+    .button-52:hover::after {
+        top: 0px;
+        left: 0px;
+    }
+
+    @media (min-width: 768px) {
+        .button-52 {
+            padding: 13px 50px 13px;
+        }
+    }
+
+    // ANIMATIONS
+    .slide-in-fwd-left {
+        -webkit-animation: slide-in-fwd-left 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-in-fwd-left 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes slide-in-fwd-left {
+        0% {
+            -webkit-transform: translateZ(-1400px) translateX(-1000px);
+                    transform: translateZ(-1400px) translateX(-1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateZ(0) translateX(0);
+                    transform: translateZ(0) translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slide-in-fwd-left {
+        0% {
+            -webkit-transform: translateZ(-1400px) translateX(-1000px);
+                    transform: translateZ(-1400px) translateX(-1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateZ(0) translateX(0);
+                    transform: translateZ(0) translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-in-fwd-right {
+        -webkit-animation: slide-in-fwd-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-in-fwd-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes slide-in-fwd-right {
+        0% {
+            -webkit-transform: translateZ(-1400px) translateX(1000px);
+                    transform: translateZ(-1400px) translateX(1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateZ(0) translateX(0);
+                    transform: translateZ(0) translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slide-in-fwd-right {
+        0% {
+            -webkit-transform: translateZ(-1400px) translateX(1000px);
+                    transform: translateZ(-1400px) translateX(1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateZ(0) translateX(0);
+                    transform: translateZ(0) translateX(0);
+            opacity: 1;
+        }
+    }
+}
 </style>
