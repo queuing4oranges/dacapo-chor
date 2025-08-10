@@ -1,10 +1,17 @@
 @use "bootstrap/scss/bootstrap" as *;
 
-$background: #e8eaff;
+/* $background: #e8eaff;
 $primary-color: #3F322C;
 $secondary-color: #bf8160;
-$logo-color: #046b52;
+$logo-color: #046b52; */
 $text-font: "Urbanist", sans-serif, Arial, Helvetica, sans-serif;
 $title-font: "Limelight", sans-serif, Arial, Helvetica, sans-serif;
 
-$accent: #ef3e47;
+/* $accent: #ef3e47; */
+
+//alternative
+$background: #d1f3e2;
+$logo-color: #046b52;
+$primary-color: #3b4841;
+$accent: #4fc9d2;
+$accent2: #fc4936;
