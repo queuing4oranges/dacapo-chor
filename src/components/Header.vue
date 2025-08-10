@@ -1,5 +1,5 @@
 <script setup>
-    import { computed, watch } from 'vue';
+    import { computed } from 'vue';
     import { useRoute } from 'vue-router';
     import MusicalNoteButton from './reusables/MusicalNoteButton.vue';
 
@@ -10,8 +10,8 @@
 <template>
     <header class="header d-flex justify-content-between p-2 mx-auto mb-4">
         <router-link to="/" class="text-decoration-none">
-            <span class="d-flex flex-column p-1 note-btn" title="Home">
-                <MusicalNoteButton height="40" width="40" />
+            <span class="d-flex flex-column p-1 note-btn" title="Zurück zum Anfang">
+                <MusicalNoteButton height="60" width="60" />
             </span>
         </router-link>
         <template v-if="!isNotRoute">
@@ -54,11 +54,10 @@
         }
 
         i {
-            color: $accent;
+            color: $accent2;
             &:hover {
                 opacity: 0.8;
             }
         }
     }
-
 </style>
