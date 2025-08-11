@@ -7,7 +7,7 @@
                 <figcaption class="mt-1 vorstand-caption">Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
             </figure>
             <span class="px-5 d-flex flex-column align-items-between h-100">
-                <p>
+                <p class="fs-5">
                     <strong>da capo e.V.</strong> ist seit 2024 ein gemeinnütziger Verein mit Sitz in Obercunnersdorf
                     &minus; einer
                     2000-Seelen-Gemeinde im Herzen der Oberlausitz. Aktuell zählt er 18 Mitglieder mit unterschiedlicher
@@ -16,13 +16,13 @@
                     Ältere
                     oder Menschen mit Behinderung.
                 </p>
-                <p>"da capo" bedeutet übrigens in der Musik so viel wie "noch einmal" oder "von vorne".</p>
+                <p class="fs-5">"da capo" bedeutet übrigens in der Musik so viel wie "noch einmal" oder "von vorne".</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="mt-5">
-                        <p class="mb-1">Hier findet ihr unsere Satzung</p>
+                        <p class="mb-1 fs-5">Hier findet ihr unsere Satzung</p>
                         <a href="/docs/Vereinssatzung.pdf" target="_blank" rel="noopener" download class="text-decoration-none">
                             <button class="fs-6 button-52 d-flex align-items-center">
-                                <p class="satzungs-text me-2 mb-0" style="color:black; font-weight:bolder">Satzung</p>
+                                <p class="satzungs-text me-2 mb-0">Satzung</p>
                                 <i class="bi bi-file-pdf"></i>
                             </button>
                         </a>
@@ -54,7 +54,6 @@
 
     .vorstand-img {
         box-shadow: rgba(59, 72, 65, 0.19) 0px 10px 20px, rgba(59, 72, 65, 0.23) 0px 6px 6px;
-        /* transform: rotate(-5deg); */
     }
 
     strong {
@@ -83,12 +82,22 @@
         touch-action: manipulation;
         z-index: 0;
         overflow: visible;
+        color: black;
+
+        &:hover,
+        &:hover .satzungs-text {
+            color: #4fc9d2;
+        }
+
+        .satzungs-text {
+            color: black;
+            font-weight: bolder;
+        }
     }
 
     .button-52::after {
         content: "";
-        border-color: #046b52 2px solid;
-        background-color: #4fc9d2;
+        background-color: #fc4936;
         width: 100%;
         z-index: -1;
         position: absolute;
@@ -101,6 +110,7 @@
     .button-52:hover::after {
         top: 0px;
         left: 0px;
+        background-color: #046b52;
     }
 
     @media (min-width: 768px) {
