@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="d-flex align-items-center mb-2">
+    <div class="hero-title-container d-flex align-items-center mb-2">
         <span class="mx-3">
             <img :src="logo" alt="Logo" class="logo-img">
         </span>
@@ -15,6 +15,11 @@
 </template>
 
 <style lang="scss" scoped>
+    .hero-title-container {
+        margin-top: 6rem;
+        width: 80%;
+    }
+
     .hero-title {
         font-size: 6rem;
         color: $logo-color;

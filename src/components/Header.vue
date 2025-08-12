@@ -33,6 +33,11 @@
         width: 90%;
         display: flex;
         align-items: center;
+        justify-self: anchor-center;
+        background-color: transparent;
+        position: fixed;
+        top: 0;
+        left: 0;
 
         span.note-btn {
             &:hover {
