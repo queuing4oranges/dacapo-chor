@@ -8,7 +8,7 @@ import Repertoire from '@/components/Repertoire.vue';
 
 const routes = [
     { path: '/', name: 'DaCapo', component: HeroSquares },
-    { path: '/über-uns', name: 'About', component: About },
+    { path: '/ueber-uns', name: 'About', component: About },
     { path: '/kontakt', name: 'Kontakt', component: Kontakt },
     { path: '/mitglieder-gesucht', name: 'Mitglieder', component: Mitglieder },
     { path: '/repertoire', name: 'Repertoire', component: Repertoire },
