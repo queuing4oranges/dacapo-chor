@@ -105,6 +105,7 @@
     .button-52::after {
         content: "";
         background-color: #fc4936;
+        border: #4fc9d2 solid 1px;
         width: 100%;
         z-index: -1;
         position: absolute;
