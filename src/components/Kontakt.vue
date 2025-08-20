@@ -2,7 +2,7 @@
     <div class="h-100 contact-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
         <div class="h-100 w-75 d-flex justify-content-center align-items-center">
-            <div class="w-50">
+            <div class="w-50 slide-in-top">
                 <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
                     <!-- Name input -->
                     <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3 w-75">
@@ -32,7 +32,7 @@
                     </span>
                 </BForm>
             </div>
-            <div class="email-container w-50 d-flex flex-column align-items-center">
+            <div class="slide-in-bottom email-container w-50 d-flex flex-column align-items-center">
                 <span>
                     <p class="fs-3">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
                 </span>
@@ -175,4 +175,66 @@
     z-index: -1;
     pointer-events: none;
 }
+
+// ANIMATIONS
+.slide-in-top {
+	-webkit-animation: slide-in-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-in-top {
+    0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-in-top {
+    0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-bottom {
+	-webkit-animation: slide-in-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-in-bottom {
+    0% {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-in-bottom {
+    0% {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 </style>
