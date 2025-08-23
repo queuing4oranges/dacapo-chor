@@ -1,13 +1,12 @@
 <template>
-    <div class="about-container h-100 d-flex flex-column justify-content-center">
-        <HeroTitle />
-         <div class="h-100 d-flex justify-content-center align-items-start">
+    <div class="about-container h-100 d-flex flex-column justify-content-center" id="ueber-uns">
+         <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="w-75 mt-5 d-flex justify-content-center align-items-start">
                 <figure class="slide-in-fwd-left">
                     <img :src="vorstand" alt="Vorstand" class="vorstand-img">
                     <figcaption class="mt-1 vorstand-caption">Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
                 </figure>
-                <span class="px-5 d-flex flex-column align-items-between h-100" style="width: 700px">
+                <span class="about-text-container px-5 d-flex flex-column align-items-between h-100" style="width: 700px">
                     <p class="fs-5">
                         <strong>da capo e.V.</strong> ist seit 2024 ein gemeinnütziger Verein mit Sitz in Obercunnersdorf
                         &minus; einer
@@ -43,7 +42,6 @@
 </template>
 
 <script setup>
-    import HeroTitle from './HeroTitle.vue';
     import vorstand from "@/assets/vorstand.png";
     import Rico from "@/assets/chorleiter.png";
 </script>
@@ -52,11 +50,16 @@
 .about-container {
     width: 100%;
     min-height: 100vh;
-    background-image: url('@/assets/bg2.svg');
+    background-image: url('@/assets/pattern-bg-about.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    align-items: stretch;
+    background-attachment: fixed;
+
+    .about-text-container {
+        background-color: white;
+        padding: 1rem;
+    }
 
     .vorstand-img {
         width: 600px;
