@@ -1,35 +1,42 @@
-<script setup>
-    import HeroTitle from './HeroTitle.vue';
-    import link1 from "@/assets/piano.png";
-    import link2 from "@/assets/noten.png";
-    import link3 from "@/assets/tuer.png";
-    import link4 from "@/assets/haus.png";
-
-    const images = [
-        { src: link1, alt: 'Über uns', linkto: '/ueber-uns' },
-        { src: link2, alt: 'Repertoire & Auftritte', linkto: '/repertoire' },
-        { src: link3, alt: 'Kontakt', linkto: '/kontakt'  },
-        { src: link4, alt: 'Mitglieder gesucht', linkto: '/mitglieder-gesucht' },
-    ];
-</script>
-
 <template>
     <div class="home-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
         <div class="h-100 mt-5 d-flex justify-content-center align-items-center">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
-                <router-link :to="img.linkto" >
-                    <img
-                        :src="img.src"
-                        :alt="img.alt"
-                        class="link-img"
-                    />
-                </router-link>
+                <img
+                    :src="img.src"
+                    :alt="img.alt"
+                    class="link-img"
+                    @click="scrollTo(img.linkto)"
+                />
                 <div class="w-100 mb-0 img-label">{{ img.alt }}</div>
             </div>
         </div>
     </div>
 </template>
+
+<script setup>
+import HeroTitle from './HeroTitle.vue';
+import link1 from "@/assets/piano.png";
+import link2 from "@/assets/noten.png";
+import link3 from "@/assets/tuer.png";
+import link4 from "@/assets/haus.png";
+
+const images = [
+    { src: link1, alt: 'Über uns', linkto: 'ueber-uns' },
+    { src: link2, alt: 'Repertoire & Auftritte', linkto: 'repertoire' },
+    { src: link3, alt: 'Kontakt', linkto: 'kontakt'  },
+    { src: link4, alt: 'Mitglieder gesucht', linkto: 'mitglieder-gesucht' },
+];
+
+// Scroll element into view
+const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth'});
+    }
+};
+</script>
 
 <style lang="scss" scoped>
 .home-container {
