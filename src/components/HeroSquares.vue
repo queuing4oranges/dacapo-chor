@@ -64,6 +64,7 @@ const scrollTo = (id) => {
             z-index: 1;
             width: 100%;
             height: auto;
+            cursor: pointer;
         }
 
         .img-label {
@@ -80,5 +81,17 @@ const scrollTo = (id) => {
             white-space: nowrap;
         }
     }
+}
+
+.home-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("@/assets/bg2.svg");
+    background-size: cover;
+    background-position-y: center;
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
 }
 </style>
