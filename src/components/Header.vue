@@ -15,16 +15,18 @@
             </span>
         </router-link>
         <template v-if="!isNotRoute">
-            <span class="link-container">
-                <router-link to="/über-uns">Über uns</router-link>
-                <router-link to="/repertoire">Repertoire & Auftritte</router-link>
-                <router-link to="/kontakt">Kontakt</router-link>
-                <router-link to="/mitglieder-gesucht">Mitglieder gesucht</router-link>
+            <span class="d-flex align-items-center">
+                <span class="link-container">
+                    <router-link to="/ueber-uns">Über uns</router-link>
+                    <router-link to="/repertoire">Repertoire & Auftritte</router-link>
+                    <router-link to="/kontakt">Kontakt</router-link>
+                    <router-link to="/mitglieder-gesucht">Mitglieder gesucht</router-link>
+                </span>
+                <a href="https://www.instagram.com/dacapo.chor/" target="_blank" rel="noopener noreferrer">
+                    <i class="fs-1 bi bi-instagram" title="Mehr von uns auf Instagram"></i>
+                </a>
             </span>
         </template>
-        <a href="https://www.instagram.com/dacapo.chor/" target="_blank" rel="noopener noreferrer">
-            <i class="fs-1 bi bi-instagram" title="Mehr von uns auf Instagram"></i>
-        </a>
     </header>
 </template>
 
@@ -38,6 +40,7 @@
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 999;
 
         span.note-btn {
             &:hover {
@@ -46,10 +49,10 @@
         }
 
         .link-container {
-            width: 30%;
             display: flex;
             justify-content: space-between;
             a {
+                margin: 0 2rem;
                 text-decoration: none;
                 color: $logo-color;
                 &:hover {

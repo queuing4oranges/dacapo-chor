@@ -1,4 +1,12 @@
 <template>
+    <div class="controls">
+        <button @click="prev" :disabled="isAtStart">
+            <i class="bi bi-chevron-double-left"></i>
+        </button>
+        <button @click="next" :disabled="isAtEnd">
+            <i class="bi bi-chevron-double-right"></i>
+        </button>
+    </div>
     <div class="carousel">
         <div class="inner" :style="{ transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)` }">
             <div
@@ -10,14 +18,6 @@
                 <img :src="card" :alt="'Slide ' + (index + 1)" />
             </div>
         </div>
-    </div>
-    <div class="controls">
-        <button @click="prev" :disabled="isAtStart">
-            <i class="bi bi-chevron-double-left"></i>
-        </button>
-        <button @click="next" :disabled="isAtEnd">
-            <i class="bi bi-chevron-double-right"></i>
-        </button>
     </div>
 </template>
 
@@ -35,7 +35,7 @@ import img8 from "@/assets/gallery8.png";
 // Reactive array of slide URLs
 const cards = [img2, img1, img7, img3, img5, img4, img8];
 const currentIndex = ref(0);
-const slidesPerView = 3;
+const slidesPerView = 2;
 
 // Go to the previous slide
 function prev() {
@@ -56,46 +56,41 @@ const centerIndex = computed(() => currentIndex.value + Math.floor(slidesPerView
 
 <style scoped lang="scss">
 .carousel {
-  width: 90%;
-  height: auto;
-  overflow: hidden;
-  margin: 1rem auto;
-  background-color: $background;
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    margin: 1rem auto;
+    background-color: $background;
 }
 
 .inner {
-  display: flex;
-  transition: transform 0.4s ease;
+    display: flex;
+    transition: transform 0.4s ease;
 }
 
 .gallery-card {
-  min-width: calc(33.3% - 0.6rem);
-  height: 100%;
-  border-top-right-radius: 10%;
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
-  background-color: $background;
-//   opacity: 0.5;
-
-//   &.is-center {
-//     opacity: 1;
-//   }
+    min-width: calc(50% - 0.6rem);
+    height: 100%;
+    border-top-right-radius: 10%;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    background-color: $background;
 }
 
 .gallery-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .controls {
-  text-align: center;
-  margin-top: 0.5rem;
-  display: flex;
-  width: 7%;
-  justify-content: space-between;
+    text-align: center;
+    margin-top: 0.5rem;
+    display: flex;
+    width: 7%;
+    justify-content: space-between;
 }
 
 button {
@@ -115,5 +110,4 @@ button {
         color: $logo-color;
     }
 }
-
 </style>

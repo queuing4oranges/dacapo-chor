@@ -16,7 +16,7 @@
 
 <style lang="scss" scoped>
     .hero-title-container {
-        margin-top: 6rem;
+        margin: 6rem auto 0;
         width: 80%;
     }
 

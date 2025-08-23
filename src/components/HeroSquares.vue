@@ -6,7 +6,7 @@
     import link4 from "@/assets/haus.png";
 
     const images = [
-        { src: link1, alt: 'Über uns', linkto: '/über-uns' },
+        { src: link1, alt: 'Über uns', linkto: '/ueber-uns' },
         { src: link2, alt: 'Repertoire & Auftritte', linkto: '/repertoire' },
         { src: link3, alt: 'Kontakt', linkto: '/kontakt'  },
         { src: link4, alt: 'Mitglieder gesucht', linkto: '/mitglieder-gesucht' },
@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="home-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
         <div class="h-100 mt-5 d-flex justify-content-center align-items-center">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
@@ -32,6 +32,7 @@
 </template>
 
 <style lang="scss" scoped>
+.home-container {
     .img-container {
         position: relative;
         display: inline-block;
@@ -72,4 +73,5 @@
             white-space: nowrap;
         }
     }
+}
 </style>
