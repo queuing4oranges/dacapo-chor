@@ -1,6 +1,11 @@
 <template>
-    <div class="about-container h-100 d-flex flex-column justify-content-center" id="ueber-uns">
-         <div class="h-100 d-flex justify-content-center align-items-center">
+    <div
+        class="about-container h-100 d-flex flex-column justify-content-center" 
+        id="ueber-uns">
+        <div class="page-title">
+            <h1>Über uns</h1>
+        </div>
+        <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="w-75 mt-5 d-flex justify-content-center align-items-start">
                 <figure class="slide-in-fwd-left">
                     <img :src="vorstand" alt="Vorstand" class="vorstand-img">
@@ -55,6 +60,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    .vorstand-caption {
+        background-color: white;
+    }
 
     .about-text-container {
         background-color: white;
