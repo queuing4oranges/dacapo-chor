@@ -86,16 +86,4 @@ const scrollTo = (id) => {
         }
     }
 }
-
-.home-container::before {
-/*     content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("@/assets/bg2.svg");
-    background-size: cover;
-    background-position-y: center;
-    opacity: 0.4;
-    z-index: -1;
-    pointer-events: none; */
-}
 </style>

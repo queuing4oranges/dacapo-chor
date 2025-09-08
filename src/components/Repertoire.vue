@@ -6,7 +6,7 @@
             <h1>Repertoire</h1>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="h-100 w-75 mt-5 d-flex align-items-start justify-content-center">
+            <div class="h-100 w-75 d-flex align-items-start justify-content-center">
                 <div class="w-50 px-5">
                     <p class="fs-5">
                         Unser Repertoire reicht von deutschen Volksliedern über moderne Popkultur bis hin zu Traditionals aus Afrika. Hier eine Auswahl an Liedern, die wir gerade einstudieren
@@ -34,13 +34,15 @@
 </template>
 
 <script setup>
-import GreenNote from '@/components/reusables/NoteGreen.vue';
 
 const songs = [
     { id: 1, title: "Amezaliva" },
     { id: 2, title: "Dos Kelbl" },
     { id: 3, title: "Love yourself (Justin Bieber)" },
-    { id: 4, title: "Running up that hill" }
+    { id: 4, title: "Running up that hill" },
+    { id: 5, title: "I want it that way (Backstreet Boys)" },
+    { id: 6, title: "Halleluja" },
+    { id: 7, title: "Oh holy night" }
 ]
 
 </script>

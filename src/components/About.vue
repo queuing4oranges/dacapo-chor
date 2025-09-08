@@ -6,7 +6,7 @@
             <h1>Über uns</h1>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="w-75 mt-5 d-flex justify-content-center align-items-start">
+            <div class="w-75 d-flex justify-content-center align-items-start">
                 <figure class="slide-in-fwd-left">
                     <img :src="vorstand" alt="Vorstand" class="vorstand-img">
                     <figcaption class="mt-1 vorstand-caption">Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>

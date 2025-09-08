@@ -6,54 +6,54 @@
             <h1>Kontakt</h1>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="w-50 slide-in-top">
-                <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
-                    <!-- Name input -->
-                    <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3 w-75">
-                        <BFormInput id="input-1" v-model="form.name" required />
-                    </BFormGroup>
+            <div class="h-100 w-75 d-flex align-items-start justify-content-center">
+                <div class="w-50 slide-in-top">
+                    <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
+                        <!-- Name input -->
+                        <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3 w-75">
+                            <BFormInput id="input-1" v-model="form.name" required />
+                        </BFormGroup>
 
-                    <!-- Wohnort input -->
-                    <BFormGroup id="input-group-2" label="Wohnort" label-for="input-2" class="mb-3 w-75">
-                        <BFormInput id="input-2" v-model="form.address" />
-                    </BFormGroup>
+                        <!-- Wohnort input -->
+                        <BFormGroup id="input-group-2" label="Wohnort" label-for="input-2" class="mb-3 w-75">
+                            <BFormInput id="input-2" v-model="form.address" />
+                        </BFormGroup>
 
-                    <!-- Email input -->
-                    <BFormGroup id="input-group-3" label="Email Adresse" label-for="input-3" type="email" class="mb-3 w-75">
-                        <BFormInput id="input-3" v-model="form.email" placeholder="name@email.de" required />
-                    </BFormGroup>
+                        <!-- Email input -->
+                        <BFormGroup id="input-group-3" label="Email Adresse" label-for="input-3" type="email" class="mb-3 w-75">
+                            <BFormInput id="input-3" v-model="form.email" placeholder="name@email.de" required />
+                        </BFormGroup>
 
-                    <!-- Message -->
-                    <BFormGroup id="input-group-4" label="Nachricht an uns" label-for="input-4" class="mb-3 w-75">
-                        <BFormTextarea id="input-4" v-model="form.message" placeholder="Nachricht an uns ... "
-                            type="textarea" required />
-                    </BFormGroup>
+                        <!-- Message -->
+                        <BFormGroup id="input-group-4" label="Nachricht an uns" label-for="input-4" class="mb-3 w-75">
+                            <BFormTextarea id="input-4" v-model="form.message" placeholder="Nachricht an uns ... "
+                                type="textarea" required />
+                        </BFormGroup>
 
-                    <span class="d-flex justify-content-end">
-                        <button type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center">
-                            <p class="me-2 mb-0 kontakt-btn-text">Absenden</p>
-                        </button>
+                        <span class="d-flex justify-content-end">
+                            <button type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center">
+                                <p class="me-2 mb-0 kontakt-btn-text">Absenden</p>
+                            </button>
+                        </span>
+                    </BForm>
+                </div>
+                <div class="slide-in-bottom email-container w-50 d-flex flex-column align-items-center justify-content-center">
+                    <span>
+                        <p class="fs-5 anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
                     </span>
-                </BForm>
-            </div>
-            <div class="slide-in-bottom email-container w-50 d-flex flex-column align-items-center">
-                <span>
-                    <p class="fs-3">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
-                </span>
-                <span class="d-flex justify-content-start">
-                    <a href="mailto:dacapo-chor@web.de" class="text-decoration-none me-3">
-                        <p>Email</p>
-                        <Email height="100" width="200" />
-                        <p class="mt-3">dacapo-chor@web.de</p>
-                    </a>
-                </span>
+                    <span class="d-flex justify-content-start">
+                        <a href="mailto:dacapo-chor@web.de" class="text-decoration-none me-3">
+                            <Email height="100" width="200" />
+                            <p class="mt-3">dacapo-chor@web.de</p>
+                        </a>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-    import HeroTitle from './HeroTitle.vue';
     import { reactive } from 'vue';
     import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
     import Email from './reusables/Email.vue';
@@ -68,7 +68,19 @@
 
 <style lang="scss" scoped>
 .contact-container {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('@/assets/pattern-bg-about.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     z-index: 1;
+
+    .page-title h1 {
+        background-color: #fff;
+    }
+
     .contact-form {
         background-color: $accent2;
         color: $background;
@@ -142,6 +154,7 @@
         margin-left: 2rem;
         position: relative;
         z-index: 0;
+        height: 70%;
 
         // Use :deep() here because scoped CSS doesn’t apply to <svg> children.
         // Vue adds data-v-* attributes for scoping, but SVG inner elements like <path>
