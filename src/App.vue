@@ -12,10 +12,6 @@
 	<HeroSquares />
 	<About />
 	<Repertoire />
+	<Kontakt />
+	<!-- <Mitglieder /> -->
 </template>
-
-
-<!-- <router-view /> -->
- 
-<!-- <Kontakt />
-<Mitglieder /> -->

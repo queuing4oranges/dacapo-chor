@@ -1,7 +1,11 @@
 <template>
-    <div class="h-100 contact-container d-flex flex-column justify-content-center align-items-center">
-        <HeroTitle />
-        <div class="h-100 w-75 d-flex justify-content-center align-items-center">
+    <div
+        class="h-100 contact-container d-flex flex-column justify-content-center"
+        id="kontakt">
+        <div class="page-title">
+            <h1>Kontakt</h1>
+        </div>
+        <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="w-50 slide-in-top">
                 <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
                     <!-- Name input -->

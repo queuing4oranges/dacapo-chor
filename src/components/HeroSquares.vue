@@ -40,6 +40,10 @@ const scrollTo = (id) => {
 
 <style lang="scss" scoped>
 .home-container {
+    background-image: url('@/assets/home-bg-overlay.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     .img-container {
         position: relative;
         display: inline-block;
@@ -84,7 +88,7 @@ const scrollTo = (id) => {
 }
 
 .home-container::before {
-    content: "";
+/*     content: "";
     position: absolute;
     inset: 0;
     background-image: url("@/assets/bg2.svg");
@@ -92,6 +96,6 @@ const scrollTo = (id) => {
     background-position-y: center;
     opacity: 0.4;
     z-index: -1;
-    pointer-events: none;
+    pointer-events: none; */
 }
 </style>
