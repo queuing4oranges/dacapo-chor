@@ -13,8 +13,7 @@
                     </p>
                     <ul class="fs-5">
                         <li v-for="song in songs" class="single-song d-flex">
-                            <span class="single-note"><GreenNote height="80" width="40" /></span>
-                            <p class="fs-5 m-0">{{ song.title }}</p>
+                            <span>{{ song.title }}</span>
                         </li>
                     </ul>
                 </div>
@@ -49,28 +48,18 @@ const songs = [
 <style language="scss" scoped>
 .repertoire-container {
         width: 100%;
-    min-height: 100vh;
-    background-color: #d1f3e2;
+        min-height: 100vh;
+        background-image: url('@/assets/repertoire-bg.svg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     
     .green-note {
         height: 1.5rem;
     }
     
-    ul {
-        list-style-type: none;
-        
-        li {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            
-            &:hover p {
-                color: #fc4936;
-            }
-        }
-    }
-    
     .video-column {
+        margin-top: 100px;
         background: #fff;
         font-family: Montserrat, sans-serif;;
         font-size: 24px;
@@ -88,6 +77,57 @@ const songs = [
             inset #d1f3e2 0 0 0 21px, 
             inset #bfecf7 0 0 0 22px;
         text-shadow: 3px 3px 1px #bfecf7;
+    }
+
+    /* Custom styling of list */
+    ul {
+        list-style-type: none;
+        position: relative;
+
+        li {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            position: relative;
+            left: 0;
+            color: #046b52;
+            list-style: none;
+            margin: 8px 0;
+            border-left: 2px solid #fc4936;
+            transition: 0.4s;
+
+            :hover {
+                left: 10px;
+            }
+        }
+
+        li span {
+            position: relative;
+            padding: 8px;
+            padding-left: 12px;
+            display: inline-block;
+            z-index: 1;
+            transition: 0.4s;
+        }
+
+        li:hover span {
+            font-weight: 500;
+        }
+
+        li:before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 100%;
+            background: #fc4936;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: 0.4s;
+        }
+
+        li:hover:before {
+            transform: scaleX(1);
+        }
     }
 }
 </style>

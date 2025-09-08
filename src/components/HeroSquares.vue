@@ -1,7 +1,7 @@
 <template>
-    <div class="h-100 home-container d-flex flex-column justify-content-center align-items-center">
+    <div class="min-vh-100 home-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
-        <div class="h-100 mt-5 d-flex align-items-start">
+        <div class="h-100 d-flex align-items-start">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
                 <img
                     :src="img.src"

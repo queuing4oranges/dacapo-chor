@@ -61,12 +61,16 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 
+    .page-title h1 {
+        background-color: #fff;
+    }
+
     .vorstand-caption {
-        background-color: white;
+        background-color: #fff;
     }
 
     .about-text-container {
-        background-color: white;
+        background-color: #fff;
         padding: 1rem;
     }
 
@@ -117,7 +121,7 @@
     .button-52::after {
         content: "";
         background-color: #fc4936;
-        border: #4fc9d2 solid 1px;
+        /* border: #4fc9d2 solid 1px; */
         width: 100%;
         z-index: -1;
         position: absolute;
