@@ -11,22 +11,36 @@
                     <p class="fs-5">
                         Unser Repertoire reicht von deutschen Volksliedern über moderne Popkultur bis hin zu Traditionals aus Afrika. Hier eine Auswahl an Liedern, die wir gerade einstudieren
                     </p>
-                    <ul class="fs-5">
+                    <ul class="song-list fs-6">
                         <li v-for="song in songs" class="single-song d-flex">
+                            <i class="bi bi-music-note ms-2"></i>
                             <span>{{ song.title }}</span>
                         </li>
                     </ul>
                 </div>
-                <div class="video-column w-50 px-5">
-                    <iframe
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/vn943x1Y8hc?si=BwxqBl1dfuOSzipP"
-                        title="YouTube video player" 
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                        >
-                    </iframe>
+                <div class="w-50">
+                    <div class="video-column">
+                        <iframe
+                            width="460"
+                            height="257"
+                            src="https://www.youtube.com/embed/vn943x1Y8hc?si=BwxqBl1dfuOSzipP"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                            >
+                        </iframe>
+                    </div>
+                    <div class="auftritte">
+                        <p class="fs-5">
+                            Vergangene und kommende Auftritte
+                        </p>
+                        <ul class="fs-6">
+                            <li v-for="auftritt in auftritte" class="single-auftritt d-flex">
+                                <i class="bi bi-people-fill me-2 mb-2"></i>
+                                <span>{{ auftritt.place }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,6 +59,14 @@ const songs = [
     { id: 7, title: "Oh holy night" }
 ]
 
+const auftritte = [
+    { place: "AWO Wohnstätten Löbau" },
+    { place: "ASB-Seniorenpflegeheim Obercunnersdorf" },
+    { place: "„Mitmachchor“ im Rahmen des „Lebendigen Adventskalender“ bei Löbau lebt e.V." },
+    { place: "ASB Pflegeheim Obercunnersdorf" },
+    { place: "Hospiz Herrnhut" },
+]
+
 </script>
 
 <style language="scss" scoped>
@@ -61,8 +83,8 @@ const songs = [
     }
     
     .video-column {
-        margin-top: 100px;
         background: #fff;
+        width: fit-content;
         font-family: Montserrat, sans-serif;;
         font-size: 24px;
         line-height: 30px;
@@ -79,10 +101,19 @@ const songs = [
             inset #d1f3e2 0 0 0 21px, 
             inset #bfecf7 0 0 0 22px;
         text-shadow: 3px 3px 1px #bfecf7;
+        margin-bottom: 3rem;
+    }
+
+    .auftritte {
+        color: #046b52;
+
+        li:hover {
+            color: #fc4936;
+        }
     }
 
     /* Custom styling of list */
-    ul {
+    .song-list {
         list-style-type: none;
         position: relative;
 
@@ -134,10 +165,3 @@ const songs = [
     }
 }
 </style>
-
-<!-- <script>
-TODO
-- repertoire - Auftritte
-- mitglieder gesucht - evtl. @click fullscreen
-- zurück btn - smooth scrolling
-</script> -->
