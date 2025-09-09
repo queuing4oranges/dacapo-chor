@@ -1,13 +1,12 @@
 <template>
     <header class="header p-2 mx-auto mb-4">
-        <b-nav class="d-flex justify-content-between align-items-center">
-            <b-nav-item class="note-btn">
-                <a href="/" title="Zurück zum Anfang">
-                <MusicalNoteButton height="60" width="60" />
-                </a>
-            </b-nav-item>
-
+        <b-nav class="d-flex justify-content-end align-items-center">
             <div class="d-flex align-items-center">
+                <b-nav-item class="note-btn">
+                    <a href="/" title="Zurück zum Start">
+                    <MusicalNoteButton height="60" width="60" />
+                    </a>
+                </b-nav-item>
                 <b-nav-item
                     v-for="(link, idx) in navLinks"
                     :key="idx"
@@ -18,7 +17,6 @@
                         <img class="underline" :src="underlineSvg" alt="underline" />
                     </a>
                 </b-nav-item>
-
                 <b-nav-item>
                     <a
                         href="https://www.instagram.com/dacapo.chor/"
