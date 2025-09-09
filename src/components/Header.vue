@@ -12,7 +12,12 @@
                     :key="idx"
                     class="mx-3 nav-links"
                 >
-                    <a :href="'#' + link.linkto" class="nav-link-with-underline">
+                    <a
+                        :href="'#' + link.linkto"
+                        class="nav-link-with-underline"
+                        :class="{ active: activeLink === link.linkto }"
+                        @click="setActiveLink(link.linkto)"
+                    >
                         {{ link.title }}
                         <img class="underline" :src="underlineSvg" alt="underline" />
                     </a>
@@ -34,6 +39,7 @@
 <script setup>
 import MusicalNoteButton from './reusables/MusicalNoteButton.vue';
 import underlineSvg from '@/assets/underline.svg';
+import { ref } from 'vue';
 
 const navLinks = [
     { title: "Über uns", alt: 'Über uns', linkto: 'ueber-uns' },
@@ -41,6 +47,12 @@ const navLinks = [
     { title: "Kontakt", alt: 'Kontakt', linkto: 'kontakt'  },
     { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
+
+const activeLink = ref("");
+
+const setActiveLink = (link) => {
+    activeLink.value = link;
+}
 
 </script>
 
@@ -81,6 +93,10 @@ const navLinks = [
 
         a:hover .underline {
             opacity: 1;
+        }
+
+        a.active .underline {
+            opacity: 1 !important;
         }
     }
 
