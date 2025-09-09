@@ -1,9 +1,12 @@
 <template>
-    <div class="mitglieder-container d-flex flex-column justify-content-center align-items-center">
-        <HeroTitle />
-        <div class="mitglieder-content d-flex justify-content-between w-75">
-            <section class="w-25 d-flex justify-content-center">
-                <div class="h-100 mt-3 d-flex flex-column justify-content-center align-items-start">
+    <div
+    class="mitglieder-container d-flex flex-column justify-content-center align-items-center"
+    id="mitglieder">
+        <div class="page-title">
+            <h1>Mitglieder gesucht</h1>
+        </div>
+        <div class="h-100 w-75 mitglieder-content d-flex flex-column justify-content-center">
+            <div class="h-100 w-50 d-flex flex-column justify-content-center align-items-start">
                     <div class="">
                         <p>
                             <strong>da capo</strong> ist noch immer auf der <strong>Suche nach neuen Mitgliedern</strong>,
@@ -21,18 +24,16 @@
                             <i class="bi bi-music-note-beamed ms-2"></i>
                         </p>
                     </div>
-                </div>
-            </section>
-            <section class="w-75 carousel-section">
+            </div>
+            <div class="w-75 carousel-section">
                 <GalleryCarousel />
-            </section>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import GalleryCarousel from "./reusables/GalleryCarousel.vue"
-import HeroTitle from "./HeroTitle.vue"
 
 </script>
 
@@ -60,7 +61,7 @@ import HeroTitle from "./HeroTitle.vue"
 .mitglieder-container::before {
     content: "";
     position: absolute;
-    background-image: url("@/assets/chor-bw.png");
+    background-image: url("@/assets/mitglieder-bg-overlay.svg");
     inset: 0;
     background-size: cover;
     background-position-y: top;

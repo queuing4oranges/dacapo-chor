@@ -100,6 +100,7 @@ const songs = [
 
             :hover {
                 left: 10px;
+                color: #000;
             }
         }
 
@@ -133,3 +134,10 @@ const songs = [
     }
 }
 </style>
+
+<!-- <script>
+TODO
+- repertoire - Auftritte
+- mitglieder gesucht - evtl. @click fullscreen
+- zurück btn - smooth scrolling
+</script> -->

@@ -56,11 +56,10 @@ const centerIndex = computed(() => currentIndex.value + Math.floor(slidesPerView
 
 <style scoped lang="scss">
 .carousel {
-    width: 90%;
+    width: 100%;
     height: auto;
     overflow: hidden;
     margin: 1rem auto;
-    background-color: $background;
 }
 
 .inner {
@@ -74,7 +73,6 @@ const centerIndex = computed(() => currentIndex.value + Math.floor(slidesPerView
     border-top-right-radius: 10%;
     margin-left: 0.3rem;
     margin-right: 0.3rem;
-    background-color: $background;
 }
 
 .gallery-card img {
@@ -89,7 +87,7 @@ const centerIndex = computed(() => currentIndex.value + Math.floor(slidesPerView
     text-align: center;
     margin-top: 0.5rem;
     display: flex;
-    width: 7%;
+    width: 10%;
     justify-content: space-between;
 }
 

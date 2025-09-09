@@ -13,5 +13,5 @@
 	<About />
 	<Repertoire />
 	<Kontakt />
-	<!-- <Mitglieder /> -->
+	<Mitglieder />
 </template>

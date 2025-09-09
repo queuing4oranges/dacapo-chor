@@ -41,7 +41,7 @@ const navLinks = [
     { title: "Über uns", alt: 'Über uns', linkto: 'ueber-uns' },
     { title: "Repertoire", alt: 'Repertoire & Auftritte', linkto: 'repertoire' },
     { title: "Kontakt", alt: 'Kontakt', linkto: 'kontakt'  },
-    { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder-gesucht' },
+    { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
 
 </script>
