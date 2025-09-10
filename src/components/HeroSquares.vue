@@ -1,7 +1,7 @@
 <template>
     <div class="min-vh-100 home-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
-        <div class="h-100 d-flex align-items-start">
+        <div class="img-grid">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
                 <a
                     :href="'#' + img.linkto"
@@ -52,14 +52,24 @@ const setActiveLink = (link) => {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    .img-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 1400px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+
     .img-container {
         position: relative;
-        display: inline-block;
         overflow: hidden;
         text-align: center;
 
         &:hover .link-img {
-            filter: grayscale(0);
+        filter: grayscale(0);
             transform: scale(1.1);
             z-index: 2;
         }
@@ -84,14 +94,65 @@ const setActiveLink = (link) => {
             bottom: 0;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
+            color: #fff;
             background: rgba(36, 36, 36, 0.8);
-            padding: 0.8rem 1.2rem;
+            padding: 0.8rem 0.8rem;
             font-weight: bold;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             pointer-events: none;
             white-space: nowrap;
         }
     }
 }
+
+// Styling for mobiles
+@media (max-width: 768px) {
+    .home-container {
+        .img-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .img-label {
+            font-size: 0.75rem !important;
+            text-wrap: wrap;
+            height: 70px;
+        }
+
+        .link-img {
+            filter: grayscale(0%) !important;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .home-container {
+        .img-label {
+            font-size: 1rem !important;
+            text-wrap: wrap !important;
+            transform: translate(-50%) !important;
+            height: 70px;
+        }
+
+        .link-img {
+            filter: grayscale(0%) !important;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .home-container {
+        .img-label {
+            font-size: 1rem !important;
+            text-wrap: wrap !important;
+        }
+
+        .link-img {
+            filter: grayscale(0%) !important;
+        }
+    }
+}
+
+
 </style>
