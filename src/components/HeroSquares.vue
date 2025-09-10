@@ -3,12 +3,13 @@
         <HeroTitle />
         <div class="h-100 d-flex align-items-start">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
-                <img
-                    :src="img.src"
-                    :alt="img.alt"
-                    class="link-img"
-                    @click="scrollTo(img.linkto)"
-                />
+                <a :href="'#' + img.linkto">
+                    <img
+                        :src="img.src"
+                        :alt="img.alt"
+                        class="link-img nav-link-with-underline"
+                    />
+                </a>
                 <div class="w-100 mb-0 img-label">{{ img.alt }}</div>
             </div>
         </div>
@@ -29,13 +30,6 @@ const images = [
     { src: link4, alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
 
-// Scroll element into view
-const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-        el.scrollIntoView({ behavior: 'smooth'});
-    }
-};
 </script>
 
 <style lang="scss" scoped>

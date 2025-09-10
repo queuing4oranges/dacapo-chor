@@ -1,37 +1,35 @@
 <template>
-    <header class="header p-2 mx-auto mb-4">
-        <b-nav class="d-flex justify-content-end align-items-center">
-            <div class="d-flex align-items-center">
-                <b-nav-item class="note-btn">
-                    <a href="/" title="Zurück zum Start">
-                    <MusicalNoteButton height="60" width="60" />
-                    </a>
-                </b-nav-item>
-                <b-nav-item
-                    v-for="(link, idx) in navLinks"
-                    :key="idx"
-                    class="mx-3 nav-links"
+    <header class="header p-2 mx-auto mb-4 d-flex justify-content-end">
+        <b-nav class="d-flex align-items-center">
+            <b-nav-item class="note-btn">
+                <a href="/" title="Zurück zum Start">
+                <MusicalNoteButton height="60" width="60" />
+                </a>
+            </b-nav-item>
+            <b-nav-item
+                v-for="(link, idx) in navLinks"
+                :key="idx"
+                class="mx-3 nav-links"
+            >
+                <a
+                    :href="'#' + link.linkto"
+                    class="nav-link-with-underline"
+                    :class="{ active: activeLink === link.linkto }"
+                    @click="setActiveLink(link.linkto)"
                 >
-                    <a
-                        :href="'#' + link.linkto"
-                        class="nav-link-with-underline"
-                        :class="{ active: activeLink === link.linkto }"
-                        @click="setActiveLink(link.linkto)"
-                    >
-                        {{ link.title }}
-                        <img class="underline" :src="underlineSvg" alt="underline" />
-                    </a>
-                </b-nav-item>
-                <b-nav-item>
-                    <a
-                        href="https://www.instagram.com/dacapo.chor/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <i class="fs-1 bi bi-instagram" title="Mehr von uns auf Instagram"></i>
-                    </a>
-                </b-nav-item>
-            </div>
+                    {{ link.title }}
+                    <img class="underline" :src="underlineSvg" alt="underline" />
+                </a>
+            </b-nav-item>
+            <b-nav-item>
+                <a
+                    href="https://www.instagram.com/dacapo.chor/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fs-1 bi bi-instagram" title="Mehr von uns auf Instagram"></i>
+                </a>
+            </b-nav-item>
         </b-nav>
     </header>
 </template>

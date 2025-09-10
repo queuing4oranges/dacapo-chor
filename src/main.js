@@ -2,17 +2,25 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/main.scss'
 import router from './router/router';
-// Bootstrap icons
+
+//Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-// Bootstrap for Vue
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle.js'
-import * as BootstrapVueNext from 'bootstrap-vue-next';
+
+// BootstrapVueNext components
+import { BNav, BNavItem } from 'bootstrap-vue-next';
+
+import intersect from '@/directives/intersect';
 
 //createApp(App).use(router).mount('#app');
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
-app.use(BootstrapVueNext.BootstrapVueNext)
+app.use(router);
+app.directive("intersect", intersect);
 
-app.mount('#app')
+// Register individual BootstrapVueNext components
+app.component('BNav', BNav);
+app.component('BNavItem', BNavItem);
+
+app.mount('#app');

@@ -7,7 +7,7 @@
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="h-100 w-75 d-flex align-items-start justify-content-center">
-                <div class="w-50 slide-in-top">
+                <div v-intersect class="w-50" data-animation="slide-in-top">
                     <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
                         <!-- Name input -->
                         <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3 w-75">
@@ -37,7 +37,7 @@
                         </span>
                     </BForm>
                 </div>
-                <div class="slide-in-bottom email-container w-50 d-flex flex-column align-items-center justify-content-center">
+                <div v-intersect class="email-container w-50 d-flex flex-column align-items-center justify-content-center" data-animation="slide-in-bottom">
                     <span>
                         <p class="fs-5 anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
                     </span>

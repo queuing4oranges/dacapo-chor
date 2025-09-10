@@ -7,7 +7,7 @@
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="w-75 d-flex justify-content-center align-items-start">
-                <figure class="slide-in-fwd-left">
+                <figure v-intersect data-animation="slide-in-fwd-left">
                     <img :src="vorstand" alt="Vorstand" class="vorstand-img">
                     <figcaption class="mt-1 vorstand-caption">Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
                 </figure>
@@ -32,7 +32,7 @@
                                 </button>
                             </a>
                         </div>
-                        <figure class="slide-in-fwd-right img-container">
+                        <figure v-intersect data-animation="slide-in-fwd-right" class="img-container">
                             <img :src="Rico" alt="Chorleiter Rico">
                             <figcaption class="mt-1 d-flex flex-column">
                                 <span>Unser Chorleiter und </span>
