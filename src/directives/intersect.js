@@ -22,7 +22,7 @@ export default {
                     unobserve(el); // Stop observing after animation
                 }
             });
-        }, { threshold: 0.3 }); // Trigger when 30% is visible
+        }, { threshold: 0.5 }); // Trigger when 30% is visible
 
         // Start observing this element
         observe(el);
