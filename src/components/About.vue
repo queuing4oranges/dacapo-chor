@@ -1,6 +1,6 @@
 <template>
     <div
-        class="about-container h-100 d-flex flex-column justify-content-center" 
+        class="observe-section about-container h-100 d-flex flex-column justify-content-center"
         id="ueber-uns">
         <div class="page-title">
             <h1>Über uns</h1>

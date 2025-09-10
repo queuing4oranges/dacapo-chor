@@ -28,10 +28,20 @@ p {
     line-height: 1.5;
 }
 
+// Styling for title element across all sections
 .page-title {
     padding-top: 6rem;
     margin: 0 auto;
     width: 75%;
     color: $logo-color;
     margin-bottom: 3rem;
+}
+
+// Frosty background effect
+.milk-glass {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }

@@ -7,7 +7,6 @@ import { useIntersectionObserver } from "@/composables/useIntersectionObserver";
 
 export default {
     mounted(el) {
-        console.log('mounted', el)
         // Get the animation class
         const animationClass = el.dataset.animation;
 

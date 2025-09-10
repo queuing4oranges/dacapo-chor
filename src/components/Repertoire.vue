@@ -1,6 +1,6 @@
 <template>
     <div
-        class="repertoire-container h-100 d-flex flex-column justify-content-center" 
+        class="observe-section repertoire-container h-100 d-flex flex-column justify-content-center"
         id="repertoire">
         <div class="page-title">
             <h1>Repertoire</h1>

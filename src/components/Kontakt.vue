@@ -1,6 +1,6 @@
 <template>
     <div
-        class="h-100 contact-container d-flex flex-column justify-content-center"
+        class="observe-section h-100 contact-container d-flex flex-column justify-content-center"
         id="kontakt">
         <div class="page-title">
             <h1>Kontakt</h1>

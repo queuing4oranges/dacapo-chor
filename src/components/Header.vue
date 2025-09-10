@@ -1,9 +1,9 @@
 <template>
     <header class="header p-2 mx-auto mb-4 d-flex justify-content-end">
-        <b-nav class="d-flex align-items-center">
+        <b-nav class="milk-glass d-flex align-items-center">
             <b-nav-item class="note-btn">
                 <a href="/" title="Zurück zum Start">
-                <MusicalNoteButton height="60" width="60" />
+                    <MusicalNoteButton height="60" width="60" />
                 </a>
             </b-nav-item>
             <b-nav-item
@@ -46,8 +46,8 @@ const navLinks = [
     { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
 
+// Set active link to display underline
 const activeLink = ref("");
-
 const setActiveLink = (link) => {
     activeLink.value = link;
 }

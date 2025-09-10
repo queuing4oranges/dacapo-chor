@@ -1,6 +1,6 @@
 <template>
     <div
-    class="mitglieder-container d-flex flex-column justify-content-center align-items-center"
+    class="observe-section mitglieder-container d-flex flex-column justify-content-center align-items-center"
     id="mitglieder">
         <div class="page-title">
             <h1>Mitglieder gesucht</h1>
