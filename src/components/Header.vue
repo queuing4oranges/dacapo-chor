@@ -37,7 +37,11 @@
 <script setup>
 import MusicalNoteButton from './reusables/MusicalNoteButton.vue';
 import underlineSvg from '@/assets/underline.svg';
-import { ref } from 'vue';
+
+const props = defineProps({
+    activeLink: String
+});
+const emit = defineEmits(["update:active-link"]);
 
 const navLinks = [
     { title: "Über uns", alt: 'Über uns', linkto: 'ueber-uns' },
@@ -46,11 +50,9 @@ const navLinks = [
     { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
 
-// Set active link to display underline
-const activeLink = ref("");
 const setActiveLink = (link) => {
-    activeLink.value = link;
-}
+    emit("update:active-link", link);
+};
 
 </script>
 

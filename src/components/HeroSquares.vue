@@ -3,7 +3,12 @@
         <HeroTitle />
         <div class="h-100 d-flex align-items-start">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
-                <a :href="'#' + img.linkto">
+                <a
+                    :href="'#' + img.linkto"
+                    @click="setActiveLink(img.linkto)"
+                    class="nav-link-with-underline"
+                    :class="{ active: activeLink === img.linkto }"
+                >
                     <img
                         :src="img.src"
                         :alt="img.alt"
@@ -23,12 +28,21 @@ import link2 from "@/assets/noten.png";
 import link3 from "@/assets/tuer.png";
 import link4 from "@/assets/haus.png";
 
+const props = defineProps({
+    activeLink: String
+});
+const emit = defineEmits(["update:active-link"]);
+
 const images = [
     { src: link1, alt: 'Über uns', linkto: 'ueber-uns' },
     { src: link2, alt: 'Repertoire & Auftritte', linkto: 'repertoire' },
     { src: link3, alt: 'Kontakt', linkto: 'kontakt'  },
     { src: link4, alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
+
+const setActiveLink = (link) => {
+    emit("update:active-link", link);
+};
 
 </script>
 
