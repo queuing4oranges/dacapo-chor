@@ -1,13 +1,13 @@
 <template>
     <div
-        class="observe-section repertoire-container h-100 d-flex flex-column justify-content-center"
+        class="observe-section repertoire-container"
         id="repertoire">
         <div class="page-title">
             <h1>Repertoire</h1>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="h-100 w-75 d-flex align-items-start justify-content-center">
-                <div class="w-50 px-5">
+            <div class="h-100 w-75 w-sm-100 repertoire-content-wrapper">
+                <div class="repertoire-column">
                     <p class="fs-5">
                         Unser Repertoire reicht von deutschen Volksliedern über moderne Popkultur bis hin zu Traditionals aus Afrika. Hier eine Auswahl an Liedern, die wir gerade einstudieren
                     </p>
@@ -18,8 +18,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w-50">
-                    <div class="video-column">
+                <div class="video-column">
+                    <div class="video-wrapper">
                         <iframe
                             width="460"
                             height="257"
@@ -71,37 +71,53 @@ const auftritte = [
 
 <style language="scss" scoped>
 .repertoire-container {
-        width: 100%;
-        min-height: 100vh;
-        background-image: url('@/assets/repertoire-bg.svg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('@/assets/repertoire-bg.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .repertoire-content-wrapper {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+    }
+
+    .repertoire-column,
+    .video-column {
+        width: 50%;
+    }
+
+    .repertoire-column {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
     
     .green-note {
         height: 1.5rem;
     }
     
-    .video-column {
+    .video-wrapper {
         background: #fff;
-        width: fit-content;
-        font-family: Montserrat, sans-serif;;
-        font-size: 24px;
-        line-height: 30px;
-        font-weight: bold;
-        color: #009688;
-        padding: 40px;
-        box-shadow:
-            inset #02372c 0 0 0 5px, 
-            inset #03503f 0 0 0 1px, 
-            inset #046b52 0 0 0 10px, 
-            inset #2c9c7a 0 0 0 11px, 
-            inset #3fa88b 0 0 0 16px, 
-            inset #4fc9d2 0 0 0 17px, 
-            inset #d1f3e2 0 0 0 21px, 
-            inset #bfecf7 0 0 0 22px;
-        text-shadow: 3px 3px 1px #bfecf7;
         margin-bottom: 3rem;
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /*16:9 aspect ratio (9/16 = 0.5625)*/
+        height: 0;
+
+        iframe {
+            position: absolute;
+            padding: 0.5rem;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: #046b52 dashed 0.5rem;
+        }
     }
 
     .auftritte {
@@ -161,6 +177,27 @@ const auftritte = [
 
         li:hover:before {
             transform: scaleX(1);
+        }
+    }
+}
+
+/* Styling for mobiles */
+@media (max-width: 992px) {
+    .repertoire-container {
+        .repertoire-content-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .repertoire-column,
+        .video-column {
+            width: 100%;
+            padding: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin-bottom: 3rem;
         }
     }
 }

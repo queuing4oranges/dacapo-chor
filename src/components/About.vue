@@ -30,7 +30,7 @@
                                     <p class="satzungs-text me-2 mb-0">Satzung</p>
                                     <i class="bi bi-file-pdf"></i>
                                 </button>
-                                <b-button v-else variant="outline-primary" size="lg">
+                                <b-button v-else variant="outline-primary">
                                     <i class="bi bi-file-pdf"></i>
                                 </b-button>
                             </a>
@@ -72,7 +72,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .about-container {
     width: 100%;
     min-height: 100vh;
@@ -287,7 +287,7 @@
             padding: 6.5px 10px 6.5px;
         }
 
-        .btn.btn-lg.btn-outline-primary {
+        .btn.btn-outline-primary {
             color: #d1f3e2;
             background-color: #fc4936;
             border: none;
@@ -299,5 +299,4 @@
         }
     }
 }
-
 </style>
