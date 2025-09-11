@@ -96,11 +96,11 @@ const auftritte = [
         padding-left: 3rem;
         padding-right: 3rem;
     }
-    
+
     .green-note {
         height: 1.5rem;
     }
-    
+
     .video-wrapper {
         background: #fff;
         margin-bottom: 3rem;
@@ -195,9 +195,26 @@ const auftritte = [
             padding: 0;
         }
 
+        iframe {
+            border: #046b52 dashed 0.25rem !important;
+        }
+
         ul {
             padding: 0;
             margin-bottom: 3rem;
+        }
+
+        li:hover span {
+            font-weight: 400 !important;
+        }
+
+        li:before {
+            background: unset !important;
+            transition: none;
+        }
+
+        li:hover:before {
+            transform: scaleX(0);
         }
     }
 }
