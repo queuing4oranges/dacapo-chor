@@ -116,7 +116,7 @@ const auftritte = [
             left: 0;
             width: 100%;
             height: 100%;
-            border: #046b52 dashed 0.5rem;
+            border: #4fc9d2 dashed 0.5rem;
         }
     }
 
@@ -196,7 +196,7 @@ const auftritte = [
         }
 
         iframe {
-            border: #046b52 dashed 0.25rem !important;
+            border: #4fc9d2 dashed 0.25rem !important;
         }
 
         ul {

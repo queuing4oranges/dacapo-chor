@@ -1,13 +1,13 @@
 <template>
     <div
-        class="observe-section h-100 contact-container d-flex flex-column justify-content-center"
+        class="observe-section contact-container"
         id="kontakt">
         <div class="page-title">
             <h1>Kontakt</h1>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="h-100 w-75 d-flex align-items-start justify-content-center">
-                <div v-intersect class="w-50" data-animation="slide-in-top">
+            <div class="contact-column-wrapper h-100 w-75 d-flex align-items-start justify-content-center">
+                <div v-intersect class="form-container" data-animation="slide-in-top">
                     <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
                         <!-- Name input -->
                         <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3 w-75">
@@ -37,9 +37,9 @@
                         </span>
                     </BForm>
                 </div>
-                <div v-intersect class="email-container w-50 d-flex flex-column align-items-center justify-content-center" data-animation="slide-in-bottom">
+                <div v-intersect class="email-container d-flex flex-column align-items-center justify-content-center" data-animation="slide-in-bottom">
                     <span>
-                        <p class="fs-5 anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
+                        <p class="anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
                     </span>
                     <span class="d-flex justify-content-start">
                         <a href="mailto:dacapo-chor@web.de" class="text-decoration-none me-3">
@@ -70,6 +70,9 @@
 .contact-container {
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-image: url('@/assets/pattern-bg-about.svg');
     background-position: center;
     background-size: cover;
@@ -79,6 +82,11 @@
 
     .page-title h1 {
         background-color: #fff;
+    }
+
+    .form-container,
+    .email-container {
+        width: 50%;
     }
 
     .contact-form {
@@ -167,6 +175,10 @@
             opacity: 0.6;
             fill: #fc4936;
         }
+
+        .anfrage-text {
+            font-size: 1.25rem;
+        }
     }
 
     .email-container::before {
@@ -251,6 +263,31 @@
         -webkit-transform: translateY(0);
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* Styling for mobiles */
+@media (max-width: 992px) {
+    .contact-container {
+        .contact-column-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container,
+        .email-container {
+            width: 100%;
+        }
+
+        .email-container {
+            padding: 0;
+            margin: 0;
+            margin-top: 3rem;
+        }
+
+        .anfrage-text {
+            font-size: 1rem !important;
+        }
     }
 }
 
