@@ -1,5 +1,5 @@
 <template>
-    <div class="min-vh-100 home-container d-flex flex-column justify-content-center align-items-center">
+    <div class="home-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
         <div class="img-grid">
             <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
@@ -48,6 +48,7 @@ const setActiveLink = (link) => {
 
 <style lang="scss" scoped>
 .home-container {
+    min-height: 100vh;
     background-image: url('@/assets/home-bg-overlay.svg');
     background-position: center;
     background-size: cover;
@@ -111,7 +112,7 @@ const setActiveLink = (link) => {
         .img-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0;
+            gap: 0.5;
         }
 
         .img-label {
@@ -153,6 +154,4 @@ const setActiveLink = (link) => {
         }
     }
 }
-
-
 </style>

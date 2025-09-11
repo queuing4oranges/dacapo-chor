@@ -1,18 +1,18 @@
 <template>
     <div
-        class="observe-section about-container h-100 d-flex flex-column justify-content-center"
+        class="observe-section about-container d-flex flex-column justify-content-center"
         id="ueber-uns">
         <div class="page-title">
             <h1>Über uns</h1>
         </div>
-        <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="w-75 d-flex justify-content-center align-items-start">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="about-container-content w-75">
                 <figure v-intersect data-animation="slide-in-fwd-left">
                     <img :src="vorstand" alt="Vorstand" class="vorstand-img">
                     <figcaption class="mt-1 vorstand-caption">Unser Vorstand: Julia Wnetrzak, Anne Sonntag, Ricardo Friedrich</figcaption>
                 </figure>
-                <span class="about-text-container px-5 d-flex flex-column align-items-between h-100" style="width: 700px">
-                    <p class="fs-5">
+                <span class="about-text-container px-2 px-md-3 px-lg-5 d-flex flex-column align-items-between h-100">
+                    <p class="about-font-size">
                         <strong>da capo e.V.</strong> ist seit 2024 ein gemeinnütziger Verein mit Sitz in Obercunnersdorf
                         &minus; einer
                         2000-Seelen-Gemeinde im Herzen der Oberlausitz. Aktuell zählt er 18 Mitglieder mit unterschiedlicher
@@ -21,15 +21,18 @@
                         Ältere
                         oder Menschen mit Behinderung.
                     </p>
-                    <p class="fs-5">"da capo" bedeutet übrigens in der Musik so viel wie "noch einmal" oder "von vorne".</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="mt-5">
-                            <p class="mb-1 fs-5">Hier findet ihr unsere Satzung</p>
+                    <p class="about-font-size">"da capo" bedeutet übrigens in der Musik so viel wie "noch einmal" oder "von vorne".</p>
+                    <div class="about-chorleiter">
+                        <div class="satzung">
+                            <p class="mb-1 about-font-size">Hier findet ihr unsere Satzung</p>
                             <a href="/docs/Vereinssatzung.pdf" target="_blank" rel="noopener" download class="text-decoration-none">
-                                <button class="fs-6 button-52 d-flex align-items-center">
+                                <button v-if="!isMobile" class="button-52 d-flex align-items-center">
                                     <p class="satzungs-text me-2 mb-0">Satzung</p>
                                     <i class="bi bi-file-pdf"></i>
                                 </button>
+                                <b-button v-else variant="outline-primary" size="lg">
+                                    <i class="bi bi-file-pdf"></i>
+                                </b-button>
                             </a>
                         </div>
                         <figure v-intersect data-animation="slide-in-fwd-right" class="img-container">
@@ -49,6 +52,24 @@
 <script setup>
     import vorstand from "@/assets/vorstand.png";
     import Rico from "@/assets/chorleiter.png";
+    import { ref, onMounted, onBeforeUnmount, computed } from "vue";
+
+    const width = ref(window.innerWidth);
+
+    const updateWidth = () => {
+        width.value = window.innerWidth
+    }
+
+    onMounted(() => {
+        window.addEventListener('resize', updateWidth);
+    })
+
+    onBeforeUnmount(() => {
+        window.removeEventListener('resize', updateWidth);
+    })
+
+    const isMobile = computed(() => width.value <= 992);
+
 </script>
 
 <style lang="scss">
@@ -61,6 +82,17 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 
+    .about-container-content {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .page-title {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
     .page-title h1 {
         background-color: #fff;
     }
@@ -70,12 +102,27 @@
     }
 
     .about-text-container {
+        width: 43.75rem;
         background-color: #fff;
         padding: 1rem;
     }
 
+    .about-font-size {
+        font-size: 1.25rem;
+    }
+
+    .about-chorleiter {
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
+
+    .satzung {
+        margin-top: 3rem;
+    }
+
     .vorstand-img {
-        width: 600px;
+        width: 37.5rem;
         box-shadow: rgba(59, 72, 65, 0.19) 0px 10px 20px, rgba(59, 72, 65, 0.23) 0px 6px 6px;
     }
 
@@ -121,7 +168,6 @@
     .button-52::after {
         content: "";
         background-color: #fc4936;
-        /* border: #4fc9d2 solid 1px; */
         width: 100%;
         z-index: -1;
         position: absolute;
@@ -135,12 +181,6 @@
         top: 0px;
         left: 0px;
         background-color: #046b52;
-    }
-
-    @media (min-width: 768px) {
-        .button-52 {
-            padding: 13px 50px 13px;
-        }
     }
 
     // ANIMATIONS
@@ -161,6 +201,7 @@
             opacity: 1;
         }
     }
+
     @keyframes slide-in-fwd-left {
         0% {
             -webkit-transform: translateZ(-1400px) translateX(-1000px);
@@ -191,6 +232,7 @@
             opacity: 1;
         }
     }
+
     @keyframes slide-in-fwd-right {
         0% {
             -webkit-transform: translateZ(-1400px) translateX(1000px);
@@ -204,4 +246,58 @@
         }
     }
 }
+
+// Styling for mobiles
+@media (max-width: 992px) {
+    .about-container {
+        min-height: 100vh;
+
+        .about-container-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-text-container {
+            width: 100%;
+        }
+
+        .about-font-size {
+            font-size: 1rem;
+        }
+
+        .vorstand-img {
+            width: 100%;
+        }
+
+        .about-chorleiter {
+            align-items: start;
+            .satzung {
+                display: flex;
+                flex-direction: column;
+                margin-top: 1.5rem;
+            }
+        }
+
+        .img-container img {
+            width: 100px;
+        }
+
+        .button-52 {
+            font-size: 12px;
+            padding: 6.5px 10px 6.5px;
+        }
+
+        .btn.btn-lg.btn-outline-primary {
+            color: #d1f3e2;
+            background-color: #fc4936;
+            border: none;
+            border-radius: 0;
+        }
+
+        figcaption {
+            font-size: 0.75rem;
+        }
+    }
+}
+
 </style>

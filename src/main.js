@@ -9,7 +9,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // BootstrapVueNext components
-import { BNav, BNavItem } from 'bootstrap-vue-next';
+import { BButton, BNav, BNavItem } from 'bootstrap-vue-next';
 
 import intersect from '@/directives/intersect';
 
@@ -22,5 +22,6 @@ app.directive("intersect", intersect);
 // Register individual BootstrapVueNext components
 app.component('BNav', BNav);
 app.component('BNavItem', BNavItem);
+app.component('BButton', BButton);
 
 app.mount('#app');

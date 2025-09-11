@@ -24,14 +24,12 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     color: $primary-color;
-    font-size: 1.2rem;
     line-height: 1.5;
 }
 
 // Styling for title element across all sections
 .page-title {
-    padding-top: 6rem;
-    margin: 0 auto;
+    margin: 2rem auto;
     width: 75%;
     color: $logo-color;
     margin-bottom: 3rem;
@@ -44,4 +42,23 @@ p {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+    .page-title {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 1200px) {
+ //
 }
