@@ -8,38 +8,42 @@
         <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="contact-column-wrapper h-100 w-75 d-flex align-items-start justify-content-center">
                 <div v-intersect class="form-container" data-animation="slide-in-top">
-                    <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-5">
+                    <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
                         <!-- Name input -->
-                        <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3 w-75">
+                        <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3">
                             <BFormInput id="input-1" v-model="form.name" required />
                         </BFormGroup>
 
                         <!-- Wohnort input -->
-                        <BFormGroup id="input-group-2" label="Wohnort" label-for="input-2" class="mb-3 w-75">
+                        <BFormGroup id="input-group-2" label="Wohnort" label-for="input-2" class="mb-3">
                             <BFormInput id="input-2" v-model="form.address" />
                         </BFormGroup>
 
                         <!-- Email input -->
-                        <BFormGroup id="input-group-3" label="Email Adresse" label-for="input-3" type="email" class="mb-3 w-75">
+                        <BFormGroup id="input-group-3" label="Email Adresse" label-for="input-3" type="email" class="mb-3">
                             <BFormInput id="input-3" v-model="form.email" placeholder="name@email.de" required />
                         </BFormGroup>
 
                         <!-- Message -->
-                        <BFormGroup id="input-group-4" label="Nachricht an uns" label-for="input-4" class="mb-3 w-75">
+                        <BFormGroup id="input-group-4" label="Nachricht an uns" label-for="input-4" class="mb-3">
                             <BFormTextarea id="input-4" v-model="form.message" placeholder="Nachricht an uns ... "
                                 type="textarea" required />
                         </BFormGroup>
 
                         <span class="d-flex justify-content-end">
-                            <button type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center">
+                            <button v-if="!isMobile" type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center">
                                 <p class="me-2 mb-0 kontakt-btn-text">Absenden</p>
                             </button>
+                            <b-button v-else variant="outline">
+                                Absenden
+                            </b-button>
                         </span>
                     </BForm>
                 </div>
-                <div v-intersect class="email-container d-flex flex-column align-items-center justify-content-center" data-animation="slide-in-bottom">
+                <div v-intersect class="email-container" data-animation="slide-in-bottom">
+                    <EmailBg class="email-container-bg" />
                     <span>
-                        <p class="anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? Dann kontaktiere uns!</p>
+                        <p class="anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? <br> Dann kontaktiere uns!</p>
                     </span>
                     <span class="d-flex justify-content-start">
                         <a href="mailto:dacapo-chor@web.de" class="text-decoration-none me-3">
@@ -54,9 +58,26 @@
 </template>
 
 <script setup>
-    import { reactive } from 'vue';
+    import { reactive, ref, computed, onBeforeUnmount, onMounted } from 'vue';
     import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
     import Email from './reusables/Email.vue';
+    import EmailBg from "@/assets/email-bg.svg";
+
+    const width = ref(window.innerWidth);
+
+    const updateWidth = () => {
+        width.value = window.innerWidth
+    }
+
+    onMounted(() => {
+        window.addEventListener('resize', updateWidth);
+    })
+
+    onBeforeUnmount(() => {
+        window.removeEventListener('resize', updateWidth);
+    })
+
+    const isMobile = computed(() => width.value <= 992);
 
     const form = reactive({
         email: '',
@@ -94,6 +115,10 @@
         color: $background;
         justify-items: center;
         color: black;
+
+        .b-form-group {
+            width: 75%;
+        }
 
         .form-control,
         button {
@@ -158,11 +183,15 @@
     }
 
     .email-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 5rem;
-        margin-left: 2rem;
         position: relative;
         z-index: 0;
         height: 70%;
+        margin: auto 2rem;
 
         // Use :deep() here because scoped CSS doesn’t apply to <svg> children.
         // Vue adds data-v-* attributes for scoping, but SVG inner elements like <path>
@@ -181,15 +210,14 @@
         }
     }
 
-    .email-container::before {
-        content: "";
+    .email-container-bg {
         position: absolute;
         inset: 0;
-        background-image: url("@/assets/email-bg.svg");
-        background-size: cover;
-        background-position-y: center;
         pointer-events: none;
         z-index: -1;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 }
 
@@ -287,6 +315,18 @@
 
         .anfrage-text {
             font-size: 1rem !important;
+        }
+
+        .email-container-bg {
+            object-fit: contain;
+        }
+
+        .contact-form .b-form-group {
+            width: 100%;
+        }
+
+        button.outline {
+            background-color: pink !important;
         }
     }
 }
