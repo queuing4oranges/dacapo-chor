@@ -325,8 +325,9 @@
             width: 100%;
         }
 
-        button.outline {
-            background-color: pink !important;
+        button.btn-outline {
+            background-color: #046b52;
+            color: #d1f3e2;
         }
     }
 }
