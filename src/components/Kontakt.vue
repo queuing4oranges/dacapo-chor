@@ -297,6 +297,7 @@
 /* Styling for mobiles */
 @media (max-width: 992px) {
     .contact-container {
+        justify-content: flex-start;
         .contact-column-wrapper {
             display: flex;
             flex-direction: column;
