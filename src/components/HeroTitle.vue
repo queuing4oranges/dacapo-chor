@@ -1,11 +1,12 @@
 <script setup>
-import logo from "@/assets/dacapo-logo.svg";
+import Logo from "@/assets/dacapo-logo.svg";
 </script>
 
 <template>
     <div class="hero-title-container d-flex align-items-center mb-2">
-        <span class="mx-3">
-            <img :src="logo" alt="Logo" class="logo-img">
+        <span class="mx-3 logo-container">
+            <!-- <img :src="logo" alt="Logo" class="logo-img"> -->
+            <Logo alt="Logo" class="logo-img"/>
         </span>
         <span class="m-3">
             <h1 class="hero-title mb-0">da capo</h1>
@@ -30,8 +31,18 @@ import logo from "@/assets/dacapo-logo.svg";
     line-height: 0.8;
 }
 
-.logo-img {
-    height: 7rem;
+.logo-container {
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+
+    & svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 }
 
 // Mobile styles
@@ -48,8 +59,9 @@ import logo from "@/assets/dacapo-logo.svg";
         margin: unset;
     }
 
-    .logo-img {
+    .logo-container {
         height: 6rem;
+        width: 6rem;
     }
 }
 
