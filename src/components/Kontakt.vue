@@ -58,33 +58,22 @@
 </template>
 
 <script setup>
-    import { reactive, ref, computed, onBeforeUnmount, onMounted } from 'vue';
-    import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
-    import Email from './reusables/Email.vue';
-    import EmailBg from "@/assets/email-bg.svg";
+import { reactive } from 'vue';
+import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
+import Email from './reusables/Email.vue';
+import EmailBg from "@/assets/email-bg.svg";
 
-    const width = ref(window.innerWidth);
+const props = defineProps({
+    activeLink: String,
+    isMobile: Boolean
+});
 
-    const updateWidth = () => {
-        width.value = window.innerWidth
-    }
-
-    onMounted(() => {
-        window.addEventListener('resize', updateWidth);
-    })
-
-    onBeforeUnmount(() => {
-        window.removeEventListener('resize', updateWidth);
-    })
-
-    const isMobile = computed(() => width.value <= 992);
-
-    const form = reactive({
-        email: '',
-        name: '',
-        address: '',
-        message: ''
-    })
+const form = reactive({
+    email: '',
+    name: '',
+    address: '',
+    message: ''
+})
 </script>
 
 <style lang="scss" scoped>

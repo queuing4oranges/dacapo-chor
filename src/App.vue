@@ -1,16 +1,18 @@
 <template>
 	<Header
 		:active-link="activeLink"
+		:is-mobile="isMobile"
 		@update:active-link="setActiveLink"
 	/>
 	<HeroSquares
 		:active-link="activeLink"
+		:is-mobile="isMobile"
 		@update:active-link="setActiveLink"
 	/>
-	<About />
+	<About :is-mobile="isMobile" />
 	<Repertoire />
-	<Kontakt />
-	<Mitglieder />
+	<Kontakt :is-mobile="isMobile"/>
+	<Mitglieder :is-mobile="isMobile"/>
 </template>
 
 <script setup>
@@ -20,15 +22,32 @@ import Kontakt from '@/components/Kontakt.vue';
 import About from '@/components/About.vue';
 import Mitglieder from '@/components/Mitglieder.vue';
 import Repertoire from '@/components/Repertoire.vue';
-import { onMounted, ref } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 
-// Handle styling of active link in header
+// Global reactive state
+const width = ref(window.innerWidth);
+
+const updateWidth = () => {
+	width.value = window.innerWidth;
+};
+
+onMounted(() => {
+	window.addEventListener('resize', updateWidth);
+});
+
+onBeforeUnmount(() => {
+	window.removeEventListener('resize', updateWidth);
+});
+
+const isMobile = computed(() => width.value <= 992);
+
+// Active link state
 const activeLink = ref("");
 const setActiveLink = (link) => {
 	activeLink.value = link;
 };
 
-// Handle scroll behavior, url hash
+// Intersection Observer for scroll
 onMounted(() => {
 	const sections = document.querySelectorAll(".observe-section");
 

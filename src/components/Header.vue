@@ -1,6 +1,7 @@
 <template>
     <header class="header p-2 mx-auto mb-4 d-flex justify-content-end">
-        <b-nav class="milk-glass d-flex align-items-center">
+        <!-- Desktop nav -->
+        <b-nav v-if="!isMobile" class="milk-glass d-flex align-items-center">
             <b-nav-item class="note-btn">
                 <a href="/" title="Zurück zum Start">
                     <MusicalNoteButton height="60" width="60" />
@@ -15,10 +16,10 @@
                     :href="'#' + link.linkto"
                     class="nav-link-with-underline"
                     :class="{ active: activeLink === link.linkto }"
-                    @click="setActiveLink(link.linkto)"
+                    @click="handleLinkClick(link.linkto)"
                 >
                     {{ link.title }}
-                    <img class="underline" :src="underlineSvg" alt="underline" />
+                    <UnderlineSvg class="underline" alt="underline" />
                 </a>
             </b-nav-item>
             <b-nav-item>
@@ -32,16 +33,68 @@
             </b-nav-item>
         </b-nav>
     </header>
+
+    <!-- Mobile toggle -->
+    <span
+        v-show="isMobile"
+        class="header-toggle fs-1"
+        @click="isOpen = !isOpen"
+        aria-label="Toggle menu"
+    >
+        <i class="bi bi-music-note-list"></i>
+    </span>
+
+    <!-- Mobile overlay -->
+    <transition name="fade">
+        <div
+            v-if="isMobile && isOpen"
+            class="mobile-overlay"
+            @click="isOpen = false"
+        ></div>
+    </transition>
+
+    <!-- Mobile menu with slide in transition -->
+    <transition name="slide">
+        <b-nav v-if="isMobile && isOpen" vertical class="mobile-header">
+            <b-nav-item>
+                <a href="/">
+                    <i class="fs-2 bi bi-house"></i>
+                </a>
+            </b-nav-item>
+            <b-nav-item
+                v-for="(link, idx) in navLinks"
+                :key="idx"
+                class="mx-3 mobile-nav-links"
+                @click="handleLinkClick(link.linkto)"
+            >
+                <a :href="'#' + link.linkto">{{ link.title }}</a>
+            </b-nav-item>
+            <b-nav-item>
+                <a
+                    href="https://www.instagram.com/dacapo.chor/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fs-2 bi bi-instagram"></i>
+                </a>
+            </b-nav-item>
+        </b-nav>
+    </transition>
 </template>
 
 <script setup>
 import MusicalNoteButton from './reusables/MusicalNoteButton.vue';
-import underlineSvg from '@/assets/underline.svg';
+import UnderlineSvg from '@/assets/underline.svg';
+import { ref } from "vue";
 
 const props = defineProps({
-    activeLink: String
+    activeLink: String,
+    isMobile: Boolean
 });
+
 const emit = defineEmits(["update:active-link"]);
+
+const isOpen = ref(false);
 
 const navLinks = [
     { title: "Über uns", alt: 'Über uns', linkto: 'ueber-uns' },
@@ -50,22 +103,25 @@ const navLinks = [
     { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
 ];
 
-const setActiveLink = (link) => {
-    emit("update:active-link", link);
+const setActiveLink = (link) => emit('update:active-link', link);
+
+const handleLinkClick = (link) => {
+    setActiveLink(link);
+    isOpen.value = false;
 };
 
 </script>
 
-<style lang="scss" scoped>
-    .header {
-        display: flex;
-        align-items: center;
-        background-color: transparent;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        width: 100%;
+<style lang="scss">
+.header {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 111;
+    width: 100%;
 
     b-nav {
         margin: auto;
@@ -91,10 +147,7 @@ const setActiveLink = (link) => {
             pointer-events: none;
         }
 
-        a:hover .underline {
-            opacity: 1;
-        }
-
+        a:hover .underline,
         a.active .underline {
             opacity: 1 !important;
         }
@@ -113,4 +166,101 @@ const setActiveLink = (link) => {
     }
 }
 
+.header-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    z-index: 500;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.mobile-header {
+    position: fixed;
+    width: 70%;
+    top: 60px;
+    right: 15px;
+    border-radius: 3%;
+    background-color: #d1f3e2;
+    padding: 1rem;
+    z-index: 400;
+    display: flex;
+    flex-direction: column;
+
+    .mobile-nav-links {
+        a {
+            text-decoration: none;
+            color: #046b52;
+            padding-left: 0;
+        }
+    }
+
+    .bi-house {
+        color: #046b52;
+    }
+
+    .bi-instagram {
+        color: #fc4936;
+    }
+
+    i {
+        opacity: 1;
+    }
+}
+
+/* Overlay for mobile menu */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 300;
+}
+
+/* Fade transition for overlay */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
+
+/* Mobile menu slide in/out stronger */
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-enter-from {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.95);
+}
+.slide-enter-to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.slide-leave-from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.slide-leave-to {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.95);
+}
+
+@media (min-width: 993px) {
+    .header-toggle {
+        display: none;
+    }
+}
 </style>

@@ -29,7 +29,8 @@ import link3 from "@/assets/tuer.png";
 import link4 from "@/assets/haus.png";
 
 const props = defineProps({
-    activeLink: String
+    activeLink: String,
+    isMobile: Boolean
 });
 const emit = defineEmits(["update:active-link"]);
 

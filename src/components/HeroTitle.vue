@@ -5,7 +5,6 @@ import Logo from "@/assets/dacapo-logo.svg";
 <template>
     <div class="hero-title-container d-flex align-items-center mb-2">
         <span class="mx-3 logo-container">
-            <!-- <img :src="logo" alt="Logo" class="logo-img"> -->
             <Logo alt="Logo" class="logo-img"/>
         </span>
         <span class="m-3">

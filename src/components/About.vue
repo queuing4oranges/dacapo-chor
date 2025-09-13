@@ -50,25 +50,13 @@
 </template>
 
 <script setup>
-    import vorstand from "@/assets/vorstand.png";
-    import Rico from "@/assets/chorleiter.png";
-    import { ref, onMounted, onBeforeUnmount, computed } from "vue";
+import vorstand from "@/assets/vorstand.png";
+import Rico from "@/assets/chorleiter.png";
 
-    const width = ref(window.innerWidth);
-
-    const updateWidth = () => {
-        width.value = window.innerWidth
-    }
-
-    onMounted(() => {
-        window.addEventListener('resize', updateWidth);
-    })
-
-    onBeforeUnmount(() => {
-        window.removeEventListener('resize', updateWidth);
-    })
-
-    const isMobile = computed(() => width.value <= 992);
+const props = defineProps({
+    activeLink: String,
+    isMobile: Boolean
+});
 
 </script>
 
