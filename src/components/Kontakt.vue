@@ -7,6 +7,18 @@
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="contact-column-wrapper h-100 w-75 d-flex align-items-start justify-content-center">
+                <div v-intersect class="email-container" data-animation="slide-in-bottom">
+                    <span>
+                        <p class="anfrage-text">
+                            Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen?
+                            <br>
+                            Dann kontaktiere uns!
+                            <a href="mailto:dacapo-chor@web.de" class="me-3">
+                                <p class="email-address mt-3">dacapo-chor@web.de</p>
+                            </a>
+                        </p>
+                    </span>
+                </div>
                 <div v-intersect class="form-container" data-animation="slide-in-top">
                     <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
                         <!-- Name input -->
@@ -40,18 +52,6 @@
                         </span>
                     </BForm>
                 </div>
-                <div v-intersect class="email-container" data-animation="slide-in-bottom">
-                    <EmailBg class="email-container-bg" />
-                    <span>
-                        <p class="anfrage-text">Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen? <br> Dann kontaktiere uns!</p>
-                    </span>
-                    <span class="d-flex justify-content-start">
-                        <a href="mailto:dacapo-chor@web.de" class="text-decoration-none me-3">
-                            <Email height="100" width="200" />
-                            <p class="mt-3">dacapo-chor@web.de</p>
-                        </a>
-                    </span>
-                </div>
             </div>
         </div>
     </div>
@@ -60,8 +60,6 @@
 <script setup>
 import { reactive } from 'vue';
 import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
-import Email from './reusables/Email.vue';
-import EmailBg from "@/assets/email-bg.svg";
 
 const props = defineProps({
     activeLink: String,
@@ -101,10 +99,30 @@ const form = reactive({
         background-color: #fff;
     }
 
-    .form-container,
+    .form-container {
+        width: 50%;
+        max-width: 100%;
+    }
+
     .email-container {
         width: 50%;
         max-width: 100%;
+
+        span {
+            padding: 2rem;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        a,
+        .email-address {
+            color: #046b52 !important;
+            text-decoration-color: #046b52 !important;
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
     }
 
     .contact-form {
