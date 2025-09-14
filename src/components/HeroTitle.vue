@@ -7,7 +7,7 @@ import Logo from "@/assets/dacapo-logo.svg";
         <span class="mx-3 logo-container">
             <Logo alt="Logo" class="logo-img"/>
         </span>
-        <span class="m-3">
+        <span class="hero-title-wrapper m-3">
             <h1 class="hero-title mb-0">da capo</h1>
             <p class="fs-2 mb-0 subtitle">Chorgemeinschaft aus der Oberlausitz</p>
         </span>
@@ -68,6 +68,10 @@ import Logo from "@/assets/dacapo-logo.svg";
     .hero-title-container {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .hero-title-wrapper {
+        text-align: center;
     }
 }
 
