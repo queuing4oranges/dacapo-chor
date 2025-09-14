@@ -1,8 +1,10 @@
 <template>
-    <div class="home-container d-flex flex-column justify-content-center align-items-center">
-        <HeroTitle />
+    <div class="hero-container d-flex flex-column justify-content-center align-items-center">
         <div class="img-grid">
-            <div class="img-container mx-2" v-for="(img, index) in images" :key="index">
+            <div
+                v-for="(img, index) in images"
+                class="img-container mx-2"
+                :key="index">
                 <a
                     :href="'#' + img.linkto"
                     @click="setActiveLink(img.linkto)"
@@ -22,7 +24,6 @@
 </template>
 
 <script setup>
-import HeroTitle from './HeroTitle.vue';
 import link1 from "@/assets/piano.png";
 import link2 from "@/assets/noten.png";
 import link3 from "@/assets/tuer.png";
@@ -48,12 +49,9 @@ const setActiveLink = (link) => {
 </script>
 
 <style lang="scss" scoped>
-.home-container {
-    min-height: 100vh;
-    background-image: url('@/assets/home-bg-overlay.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+.hero-container {
+    min-height: fit-content;
+    background-color: $background;
 
     .img-grid {
         display: grid;
@@ -61,7 +59,7 @@ const setActiveLink = (link) => {
         gap: 1.5rem;
         width: 100%;
         max-width: 1400px;
-        margin: 2rem auto;
+        margin: 4rem auto;
         padding: 1rem;
     }
 
@@ -109,7 +107,7 @@ const setActiveLink = (link) => {
 
 // Styling for mobiles
 @media (max-width: 768px) {
-    .home-container {
+    .hero-container {
         .img-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -129,7 +127,7 @@ const setActiveLink = (link) => {
 }
 
 @media (max-width: 992px) {
-    .home-container {
+    .hero-container {
         .img-label {
             font-size: 1rem !important;
             text-wrap: wrap !important;
@@ -144,7 +142,7 @@ const setActiveLink = (link) => {
 }
 
 @media (max-width: 1200px) {
-    .home-container {
+    .hero-container {
         .img-label {
             font-size: 1rem !important;
             text-wrap: wrap !important;
