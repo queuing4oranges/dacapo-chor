@@ -85,7 +85,7 @@ const form = reactive({
     min-height: 100vh;
     max-height: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
