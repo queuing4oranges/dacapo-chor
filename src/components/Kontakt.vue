@@ -77,9 +77,16 @@ const form = reactive({
 </script>
 
 <style lang="scss" scoped>
+.contact-container,
+.contact-container * {
+    box-sizing: border-box;
+}
+
 .contact-container {
     width: 100%;
     min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,6 +104,7 @@ const form = reactive({
     .form-container,
     .email-container {
         width: 50%;
+        max-width: 100%;
     }
 
     .contact-form {
@@ -138,7 +146,7 @@ const form = reactive({
 
         .contact-btn::after {
             content: "";
-            background-color: #fc4936;
+            background-color: #b37800;
             border: #4fc9d2 1px solid;
             width: 100%;
             z-index: -1;
@@ -191,7 +199,7 @@ const form = reactive({
 
         :deep(svg:hover .hover-fill) {
             opacity: 0.6;
-            fill: #fc4936;
+            fill: #b37800;
         }
 
         .anfrage-text {
@@ -287,14 +295,17 @@ const form = reactive({
 @media (max-width: 992px) {
     .contact-container {
         justify-content: flex-start;
+
         .contact-column-wrapper {
             display: flex;
             flex-direction: column;
+            max-width: 100vw;
         }
 
         .form-container,
         .email-container {
             width: 100%;
+            max-width: 100%;
         }
 
         .email-container {

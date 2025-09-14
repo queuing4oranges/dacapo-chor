@@ -19,7 +19,7 @@
 
 <script setup>
 const props = defineProps({
-    bgColor: { type: String, default: '#fc4936' },
+    bgColor: { type: String, default: '#b37800' },
     hoverColor: { type: String, default: ''},
     height: { type: String, default: '40px'},
     width: { type: String, default: '100px'},

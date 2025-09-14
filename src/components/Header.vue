@@ -41,7 +41,7 @@
         @click="isOpen = !isOpen"
         aria-label="Toggle menu"
     >
-        <i class="bi bi-music-note-list"></i>
+        <i :class="isOpen ? 'bi bi-x-lg' : 'bi bi-music-note-list'"></i>
     </span>
 
     <!-- Mobile overlay -->
@@ -174,6 +174,7 @@ const handleLinkClick = (link) => {
     z-index: 500;
     cursor: pointer;
     opacity: 1;
+    color: #b37800;
 }
 
 .mobile-header {
@@ -200,8 +201,8 @@ const handleLinkClick = (link) => {
         color: #046b52;
     }
 
-    .bi-instagram {
-        color: #fc4936;
+    .bi-instagram{
+        color: #b37800;
     }
 
     i {

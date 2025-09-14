@@ -70,9 +70,16 @@ const auftritte = [
 </script>
 
 <style language="scss" scoped>
+.repertoire-container,
+.repertoire-container * {
+    box-sizing: border-box;
+}
+
 .repertoire-container {
     width: 100%;
     min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,16 +92,20 @@ const auftritte = [
         display: flex;
         align-items: start;
         justify-content: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .repertoire-column,
     .video-column {
         width: 50%;
+        max-width: 100%;
     }
 
     .repertoire-column {
         padding-left: 3rem;
         padding-right: 3rem;
+        max-width: 100%;
     }
 
     .green-note {
@@ -117,6 +128,8 @@ const auftritte = [
             width: 100%;
             height: 100%;
             border: #4fc9d2 dashed 0.5rem;
+            max-width: 100%;
+            width: 100%;
         }
     }
 
@@ -124,7 +137,7 @@ const auftritte = [
         color: #046b52;
 
         li:hover {
-            color: #fc4936;
+            color: #b37800;
         }
     }
 
@@ -142,7 +155,7 @@ const auftritte = [
             color: #046b52;
             list-style: none;
             margin: 8px 0;
-            border-left: 2px solid #fc4936;
+            border-left: 2px solid #b37800;
             transition: 0.4s;
 
             :hover {
@@ -169,7 +182,7 @@ const auftritte = [
             position: absolute;
             width: 80%;
             height: 100%;
-            background: #fc4936;
+            background: #b37800;
             transform: scaleX(0);
             transform-origin: left;
             transition: 0.4s;
@@ -187,12 +200,15 @@ const auftritte = [
         .repertoire-content-wrapper {
             display: flex;
             flex-direction: column;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
         .repertoire-column,
         .video-column {
             width: 100%;
             padding: 0;
+            max-width: 100%;
         }
 
         iframe {

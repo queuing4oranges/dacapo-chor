@@ -16,7 +16,7 @@
                     </p>
                 </div>
             </div>
-            <div class="carousel-section p-2">
+            <div class="carousel-section">
                 <p class="mitglied-werden">
                     Wenn du Interesse an einer unverbindlichen Schnupperstunde hast, melde dich bei uns!
                     <br>
@@ -26,7 +26,9 @@
                         <i class="bi bi-music-note-beamed ms-2"></i>
                     </span>
                 </p>
-                <GalleryCarousel />
+                <div class="carousel-container">
+                    <GalleryCarousel />
+                </div>
             </div>
         </div>
     </div>
@@ -38,6 +40,11 @@ import GalleryCarousel from "./reusables/GalleryCarousel.vue"
 </script>
 
 <style scoped lang="scss">
+.mitglieder-container,
+.mitglieder-container * {
+    box-sizing: border-box;
+}
+
 .mitglieder-container {
     display: flex;
     flex-direction: column;
@@ -45,15 +52,19 @@ import GalleryCarousel from "./reusables/GalleryCarousel.vue"
     align-items: center;
     min-height: 100vh;
     position: relative;
+    max-width: 100vw;
+    overflow-x: hidden;
 
     .mitglieder-content {
         min-height: 500px;
         width: 75%;
+        max-width: 100%;
     }
 
     .carousel-section {
         align-self: end;
         width: 75%;
+        max-width: 100%;
     }
 
     p strong:first-child {
@@ -80,6 +91,8 @@ import GalleryCarousel from "./reusables/GalleryCarousel.vue"
     z-index: -1;
     pointer-events: none;
     min-height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 @media (max-width: 992px) {
@@ -106,6 +119,14 @@ import GalleryCarousel from "./reusables/GalleryCarousel.vue"
         .proben-aufruf {
             display: block;
             margin-top: 3rem;
+        }
+
+        .carousel-section {
+            .carousel-container {
+                padding: 3rem;
+                max-width: 100%;
+                overflow: hidden;
+            }
         }
     }
 }

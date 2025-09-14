@@ -61,6 +61,11 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+.about-container,
+.about-container * {
+    box-sizing: border-box;
+}
+
 .about-container {
     width: 100%;
     min-height: 100vh;
@@ -69,11 +74,15 @@ const props = defineProps({
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    max-width: 100vw;
+    overflow-x: hidden;
 
     .about-container-content {
         display: flex;
         justify-content: center;
         align-items: start;
+        width: 100%;
+        max-width: 100%;
     }
 
     .page-title {
@@ -93,6 +102,7 @@ const props = defineProps({
         width: 43.75rem;
         background-color: #fff;
         padding: 1rem;
+        max-width: 100%;
     }
 
     .about-font-size {
@@ -111,7 +121,10 @@ const props = defineProps({
 
     .vorstand-img {
         width: 37.5rem;
-        box-shadow: rgba(59, 72, 65, 0.19) 0px 10px 20px, rgba(59, 72, 65, 0.23) 0px 6px 6px;
+        box-shadow:
+            rgba(59, 72, 65, 0.19) 0px 10px 20px,
+            rgba(59, 72, 65, 0.23) 0px 6px 6px;
+        max-width: 100%;
     }
 
     strong {
@@ -121,7 +134,10 @@ const props = defineProps({
     .img-container {
         img {
             width: 200px;
-            box-shadow: rgba(59, 72, 65, 0.19) 0px 10px 20px, rgba(59, 72, 65, 0.23) 0px 6px 6px;
+            box-shadow:
+                rgba(59, 72, 65, 0.19) 0px 10px 20px,
+                rgba(59, 72, 65, 0.23) 0px 6px 6px;
+            max-width: 100%;
         }
     }
 
@@ -155,7 +171,7 @@ const props = defineProps({
 
     .button-52::after {
         content: "";
-        background-color: #fc4936;
+        background-color: #b37800;
         width: 100%;
         z-index: -1;
         position: absolute;
@@ -247,6 +263,7 @@ const props = defineProps({
 
         .about-text-container {
             width: 100%;
+            box-sizing: border-box;
         }
 
         .about-font-size {
@@ -277,7 +294,7 @@ const props = defineProps({
 
         .btn.btn-outline-primary {
             color: #d1f3e2;
-            background-color: #fc4936;
+            background-color: #b37800;
             border: none;
             border-radius: 0;
         }
