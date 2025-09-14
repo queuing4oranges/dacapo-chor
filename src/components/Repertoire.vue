@@ -13,30 +13,28 @@
                     </p>
                     <ul class="song-list fs-6">
                         <li v-for="song in songs" class="single-song d-flex">
-                            <i class="bi bi-music-note ms-2"></i>
-                            <span>{{ song.title }}</span>
+                            <span class="mini-logo-container me-2">
+                                <MiniLogo alt="Logo" class="mini-logo"/>
+                            </span>
+                            <template v-if="song.url">
+                                <a :href="song.url" target="_blank" rel="noopener noreferrer">{{ song.title }}</a>
+                            </template>
+                            <template v-else>
+                                <span>{{ song.title }}</span>
+                            </template>
                         </li>
                     </ul>
                 </div>
-                <div class="video-column">
-                    <div class="video-wrapper">
-                        <iframe
-                            width="460"
-                            height="257"
-                            src="https://www.youtube.com/embed/vn943x1Y8hc?si=BwxqBl1dfuOSzipP"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                            >
-                        </iframe>
-                    </div>
+                <div class="auftritte-column">
                     <div class="auftritte">
                         <p class="fs-5">
                             Vergangene und kommende Auftritte
                         </p>
                         <ul class="fs-6">
                             <li v-for="auftritt in auftritte" class="single-auftritt d-flex">
-                                <i class="bi bi-people-fill me-2 mb-2"></i>
+                                <span class="mini-logo-container me-2">
+                                    <MiniLogo alt="Logo" class="mini-logo"/>
+                                </span>
                                 <span>{{ auftritt.place }}</span>
                             </li>
                         </ul>
@@ -48,12 +46,13 @@
 </template>
 
 <script setup>
+import MiniLogo from '@/assets/dacapo-logo.svg';
 
 const songs = [
     { id: 1, title: "Amezaliva" },
     { id: 2, title: "Dos Kelbl" },
     { id: 3, title: "Love yourself (Justin Bieber)" },
-    { id: 4, title: "Running up that hill" },
+    { id: 4, title: "Running up that hill", url: "https://www.youtube.com/embed/vn943x1Y8hc?si=BwxqBl1dfuOSzipP" },
     { id: 5, title: "I want it that way (Backstreet Boys)" },
     { id: 6, title: "Halleluja" },
     { id: 7, title: "Oh holy night" }
@@ -97,7 +96,7 @@ const auftritte = [
     }
 
     .repertoire-column,
-    .video-column {
+    .auftritte-column {
         width: 50%;
         max-width: 100%;
     }
@@ -144,53 +143,33 @@ const auftritte = [
     /* Custom styling of list */
     .song-list {
         list-style-type: none;
-        position: relative;
+        color: #046b52;
 
-        li {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            position: relative;
-            left: 0;
-            color: #046b52;
-            list-style: none;
-            margin: 8px 0;
-            border-left: 2px solid #b37800;
-            transition: 0.4s;
+        a {
+            color: inherit;
 
-            :hover {
-                left: 10px;
-                color: #000;
+            &:hover {
+                opacity: 0.8;
             }
         }
+    }
 
-        li span {
-            position: relative;
-            padding: 8px;
-            padding-left: 12px;
-            display: inline-block;
-            z-index: 1;
-            transition: 0.4s;
-        }
+    .mini-logo-container {
+        width: 2rem;
+        height: 2rem;
+        position: relative;
 
-        li:hover span {
-            font-weight: 500;
-        }
-
-        li:before {
-            content: "";
+        & svg {
             position: absolute;
-            width: 80%;
+            inset: 0;
+            width: 100%;
             height: 100%;
-            background: #b37800;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: 0.4s;
+            object-fit: contain;
         }
+    }
 
-        li:hover:before {
-            transform: scaleX(1);
-        }
+    li {
+        padding: 0.4rem;
     }
 }
 
@@ -205,7 +184,7 @@ const auftritte = [
         }
 
         .repertoire-column,
-        .video-column {
+        .auftritte-column {
             width: 100%;
             padding: 0;
             max-width: 100%;

@@ -83,6 +83,7 @@ const form = reactive({
 .contact-container {
     width: 100%;
     min-height: 100vh;
+    max-height: 100%;
     max-width: 100vw;
     overflow-x: hidden;
     display: flex;
@@ -208,31 +209,9 @@ const form = reactive({
         height: 70%;
         margin: auto 2rem;
 
-        // Use :deep() here because scoped CSS doesn’t apply to <svg> children.
-        // Vue adds data-v-* attributes for scoping, but SVG inner elements like <path>
-        // don’t get those, so we need :deep() to style them properly.
-        :deep(svg .hover-fill) {
-            fill: #046b52;
-        }
-
-        :deep(svg:hover .hover-fill) {
-            opacity: 0.6;
-            fill: #b37800;
-        }
-
         .anfrage-text {
             font-size: 1.25rem;
         }
-    }
-
-    .email-container-bg {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: -1;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
     }
 }
 
@@ -336,10 +315,6 @@ const form = reactive({
             font-size: 1rem !important;
         }
 
-        .email-container-bg {
-            object-fit: contain;
-        }
-
         .contact-form .b-form-group {
             width: 100%;
         }
@@ -350,5 +325,4 @@ const form = reactive({
         }
     }
 }
-
 </style>
