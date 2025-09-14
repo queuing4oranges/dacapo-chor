@@ -91,14 +91,14 @@ const setActiveLink = (link) => {
 
         .img-label {
             position: absolute;
-            bottom: 0;
+            bottom: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;
-            background: rgba(36, 36, 36, 0.8);
+            background: rgba(4, 107, 82, 0.5);
             padding: 0.8rem 0.8rem;
             font-weight: bold;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             pointer-events: none;
             white-space: nowrap;
         }
@@ -118,10 +118,7 @@ const setActiveLink = (link) => {
             font-size: 0.75rem !important;
             text-wrap: wrap;
             height: 70px;
-        }
-
-        .link-img {
-            filter: grayscale(0%) !important;
+            background: rgba(4, 107, 82, 0.3);
         }
     }
 }
@@ -129,14 +126,9 @@ const setActiveLink = (link) => {
 @media (max-width: 992px) {
     .hero-container {
         .img-label {
-            font-size: 1rem !important;
             text-wrap: wrap !important;
             transform: translate(-50%) !important;
             height: 70px;
-        }
-
-        .link-img {
-            filter: grayscale(0%) !important;
         }
     }
 }
@@ -146,10 +138,6 @@ const setActiveLink = (link) => {
         .img-label {
             font-size: 1rem !important;
             text-wrap: wrap !important;
-        }
-
-        .link-img {
-            filter: grayscale(0%) !important;
         }
     }
 }

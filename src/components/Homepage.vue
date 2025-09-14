@@ -17,5 +17,9 @@ import HomeImg from '@/assets/DaCapoHomepageBild.png';
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    img {
+        max-width: 100%;
+    }
 }
 </style>
