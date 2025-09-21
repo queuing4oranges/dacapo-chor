@@ -4,7 +4,7 @@
         <b-nav v-if="!isMobile" class="milk-glass d-flex align-items-center">
             <b-nav-item class="note-btn">
                 <a href="/" title="Zurück zum Start">
-                    <MusicalNoteButton height="60" width="60" />
+                    <i class='fs-1 bi bi-music-note-list'></i>
                 </a>
             </b-nav-item>
             <b-nav-item
@@ -83,7 +83,6 @@
 </template>
 
 <script setup>
-import MusicalNoteButton from './reusables/MusicalNoteButton.vue';
 import UnderlineSvg from '@/assets/underline.svg';
 import { ref } from "vue";
 

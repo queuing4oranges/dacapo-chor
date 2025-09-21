@@ -72,7 +72,7 @@ const auftritte = [
 
 </script>
 
-<style language="scss" scoped>
+<style lang="scss" scoped>
 .repertoire-container,
 .repertoire-container * {
     box-sizing: border-box;

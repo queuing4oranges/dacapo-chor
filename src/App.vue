@@ -9,6 +9,7 @@
 	<Repertoire />
 	<Kontakt :is-mobile="isMobile"/>
 	<Mitglieder :is-mobile="isMobile"/>
+	<Impressum />
 </template>
 
 <script setup>
@@ -18,6 +19,7 @@ import Kontakt from '@/components/Kontakt.vue';
 import About from '@/components/About.vue';
 import Mitglieder from '@/components/Mitglieder.vue';
 import Repertoire from '@/components/Repertoire.vue';
+import Impressum from './components/Impressum.vue';
 import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 
 // Global reactive state
