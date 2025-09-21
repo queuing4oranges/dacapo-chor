@@ -5,11 +5,6 @@
 		@update:active-link="setActiveLink"
 	/>
 	<Homepage />
-	<HeroSquares
-		:active-link="activeLink"
-		:is-mobile="isMobile"
-		@update:active-link="setActiveLink"
-	/>
 	<About :is-mobile="isMobile" />
 	<Repertoire />
 	<Kontakt :is-mobile="isMobile"/>
@@ -18,7 +13,6 @@
 
 <script setup>
 import Header from './components/Header.vue';
-import HeroSquares from './components/HeroSquares.vue';
 import Homepage from './components/Homepage.vue';
 import Kontakt from '@/components/Kontakt.vue';
 import About from '@/components/About.vue';

@@ -33,6 +33,7 @@ const props = defineProps({
     activeLink: String,
     isMobile: Boolean
 });
+
 const emit = defineEmits(["update:active-link"]);
 
 const images = [
@@ -51,7 +52,6 @@ const setActiveLink = (link) => {
 <style lang="scss" scoped>
 .hero-container {
     min-height: fit-content;
-    background-color: $background;
 
     .img-grid {
         display: grid;
