@@ -7,7 +7,7 @@
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
             <div class="contact-column-wrapper h-100 w-75 d-flex align-items-start justify-content-center">
-                <div v-intersect class="email-container" data-animation="slide-in-bottom">
+                <div v-intersect class="email-container" data-animation="slide-in-fwd-left">
                     <span>
                         <p class="anfrage-text">
                             Du hast eine Frage, möchtest zu einer Probe vorbeikommen oder uns buchen?
@@ -19,7 +19,7 @@
                         </p>
                     </span>
                 </div>
-                <div v-intersect class="form-container" data-animation="slide-in-top">
+                <div v-intersect class="form-container" data-animation="slide-in-fwd-right">
                     <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
                         <!-- Name input -->
                         <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3">
@@ -225,67 +225,6 @@ const form = reactive({
     opacity: 0.4;
     z-index: -1;
     pointer-events: none;
-}
-
-// ANIMATIONS
-.slide-in-top {
-	-webkit-animation: slide-in-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@-webkit-keyframes slide-in-top {
-    0% {
-        -webkit-transform: translateY(-1000px);
-        transform: translateY(-1000px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-@keyframes slide-in-top {
-    0% {
-        -webkit-transform: translateY(-1000px);
-        transform: translateY(-1000px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.slide-in-bottom {
-	-webkit-animation: slide-in-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@-webkit-keyframes slide-in-bottom {
-    0% {
-        -webkit-transform: translateY(1000px);
-        transform: translateY(1000px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-@keyframes slide-in-bottom {
-    0% {
-        -webkit-transform: translateY(1000px);
-        transform: translateY(1000px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 /* Styling for mobiles */
