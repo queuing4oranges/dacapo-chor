@@ -8,7 +8,7 @@
 	<About :is-mobile="isMobile" />
 	<Repertoire />
 	<Kontakt :is-mobile="isMobile"/>
-	<Mitglieder :is-mobile="isMobile"/>
+	<Gallery :is-mobile="isMobile"/>
 	<Impressum />
 </template>
 
@@ -17,7 +17,7 @@ import Header from './components/Header.vue';
 import Homepage from './components/Homepage.vue';
 import Kontakt from '@/components/Kontakt.vue';
 import About from '@/components/About.vue';
-import Mitglieder from '@/components/Mitglieder.vue';
+import Gallery from '@/components/Gallery.vue';
 import Repertoire from '@/components/Repertoire.vue';
 import Impressum from './components/Impressum.vue';
 import { ref, onMounted, onBeforeUnmount, computed } from "vue";

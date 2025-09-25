@@ -69,12 +69,12 @@ const props = defineProps({
 .about-container {
     width: 100%;
     min-height: 100vh;
+    max-width: 100vw;
     background-image: url('@/assets/pattern-bg-about.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    max-width: 100vw;
     overflow-x: hidden;
 
     .about-container-content {

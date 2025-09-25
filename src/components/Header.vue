@@ -99,7 +99,7 @@ const navLinks = [
     { title: "Über uns", alt: 'Über uns', linkto: 'ueber-uns' },
     { title: "Repertoire", alt: 'Repertoire & Auftritte', linkto: 'repertoire' },
     { title: "Kontakt", alt: 'Kontakt', linkto: 'kontakt'  },
-    { title: "Mitglieder gesucht", alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
+    { title: "Galerie", alt: 'Galerie', linkto: 'galerie' },
 ];
 
 const setActiveLink = (link) => emit('update:active-link', link);

@@ -40,7 +40,7 @@ const images = [
     { src: link1, alt: 'Über uns', linkto: 'ueber-uns' },
     { src: link2, alt: 'Repertoire & Auftritte', linkto: 'repertoire' },
     { src: link3, alt: 'Kontakt', linkto: 'kontakt'  },
-    { src: link4, alt: 'Mitglieder gesucht', linkto: 'mitglieder' },
+    { src: link4, alt: 'Galerie', linkto: 'galerie' },
 ];
 
 const setActiveLink = (link) => {
