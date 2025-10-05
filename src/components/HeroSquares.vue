@@ -91,7 +91,7 @@ const setActiveLink = (link) => {
 
         .img-label {
             position: absolute;
-            bottom: 30%;
+            bottom: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;

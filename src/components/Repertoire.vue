@@ -68,6 +68,7 @@ const auftritte = [
     { place: "„Mitmachchor“ im Rahmen des „Lebendigen Adventskalender“ bei Löbau lebt e.V." },
     { place: "ASB Pflegeheim Obercunnersdorf" },
     { place: "Hospiz Herrnhut" },
+    { place: "Festival „Schwarzer Herbst“, Johanniskirche Löbau" }
 ]
 
 </script>
