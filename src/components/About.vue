@@ -26,12 +26,12 @@
                         <div class="satzung">
                             <p class="mb-1 about-font-size">Hier findet ihr unsere Satzung</p>
                             <a href="/docs/Vereinssatzung.pdf" target="_blank" rel="noopener" download class="text-decoration-none">
-                                <button v-if="!isMobile" class="button-52 d-flex align-items-center">
+                                <button v-if="!isMobile" class="button-52 d-flex align-items-center" aria-label="Download Satzung">
                                     <p class="satzungs-text me-2 mb-0">Satzung</p>
                                     <i class="bi bi-file-pdf"></i>
                                 </button>
-                                <b-button v-else variant="outline-primary">
-                                    <i class="bi bi-file-pdf"></i>
+                                <b-button v-else variant="outline-primary" aria-label="Download Satzung">
+                                    <i class="bi bi-file-pdf" aria-hidden="true"></i>
                                 </b-button>
                             </a>
                         </div>
