@@ -239,6 +239,7 @@ const form = reactive({
 @media (max-width: 992px) {
     .contact-container {
         justify-content: flex-start;
+        font-size: 1rem;
 
         .contact-column-wrapper {
             display: flex;

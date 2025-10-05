@@ -53,7 +53,13 @@ import GalleryCarousel from "./reusables/GalleryCarousel.vue"
     .gallery-container {
         display: flex;
         justify-content: flex-start;
-        min-height: fit-content;
+        min-height: auto;
+        height: auto;
+
+        &::before {
+            min-height: 0; /* reset pseudo-element */
+            height: 100%;
+        }
 
         .carousel-container {
             padding: 3rem;
