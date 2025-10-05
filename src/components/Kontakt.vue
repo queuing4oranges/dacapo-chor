@@ -18,6 +18,9 @@
                     Du möchtest uns buchen oder hast ein anderes Anliegen? Nutze auch dafür gern unser Kontaktformular!
                     <i class="bi bi-arrow-right"></i>
                 </p>
+                <p v-if="!isMobile" class="mt-4">
+                    Als gemeinnütziger Verein finanzieren wir uns vorrangig durch Spenden. So können wir Honorare für Auftritte möglichst gering halten. Wenn du uns unterstützen willst, kannst du das hier tun: <br>DE21 8559 0100 4564 544006 <br>Eine Spendenquittung erhältst du auf Anfrage.
+                </p>
             </div>
             <div v-intersect class="form-container" data-animation="slide-in-fwd-right">
                 <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
@@ -51,6 +54,11 @@
                         </b-button>
                     </span>
                 </BForm>
+            </div>
+            <div  v-if="isMobile" class="text-container">
+                <p>
+                    Als gemeinnütziger Verein finanzieren wir uns vorrangig durch Spenden. So können wir Honorare für Auftritte möglichst gering halten. Wenn du uns unterstützen willst, kannst du das hier tun: <br>DE21 8559 0100 4564 544006 <br>Eine Spendenquittung erhältst du auf Anfrage.
+                </p>
             </div>
         </div>
     </div>
