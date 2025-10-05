@@ -1,10 +1,14 @@
 <template>
-    <header class="header p-2 mx-auto mb-4 d-flex justify-content-end">
+    <header class="header p-2 mx-auto mb-4 d-flex justify-content-end" role="banner">
         <!-- Desktop nav -->
-        <b-nav v-if="!isMobile" class="milk-glass d-flex align-items-center">
+        <b-nav
+            v-if="!isMobile"
+            class="milk-glass d-flex align-items-center main-nav"
+            aria-label="Hauptnavigation"
+        >
             <b-nav-item class="note-btn">
-                <a href="/" title="Zurück zum Start">
-                    <i class='fs-1 bi bi-music-note-list'></i>
+                <a href="/" title="Zurück zum Start" aria-label="Zurück zum Start">
+                    <i class='fs-1 bi bi-music-note-list' aria-hidden="true"></i>
                 </a>
             </b-nav-item>
             <b-nav-item
@@ -16,6 +20,7 @@
                     :href="'#' + link.linkto"
                     class="nav-link-with-underline"
                     :class="{ active: activeLink === link.linkto }"
+                    :aria-current="activeLink === link.linkto ? 'page' : null"
                     @click="handleLinkClick(link.linkto)"
                 >
                     {{ link.title }}
@@ -27,6 +32,7 @@
                     href="https://www.instagram.com/dacapo.chor/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Mehr von uns auf Instagram"
                 >
                     <i class="fs-1 bi bi-instagram" title="Mehr von uns auf Instagram"></i>
                 </a>
@@ -121,10 +127,19 @@ const handleLinkClick = (link) => {
     left: 0;
     z-index: 111;
     width: 100%;
+    font-size: 24px;
 
     b-nav {
         margin: auto;
         width: 90%;
+    }
+
+    .main-nav {
+        font-size: 24px;
+
+        .nav-item {
+            margin-right: 10px;
+        }
     }
 
     .nav-links {
