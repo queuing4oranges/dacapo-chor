@@ -5,6 +5,10 @@
         <div class="page-title">
             <h1>Kontakt</h1>
         </div>
+        <DatenschutzModal
+            :isVisible="showModal"
+            @close="showModal = false"
+        />
         <div class="contact-column-wrapper w-75 d-flex align-items-center justify-content-center">
             <div v-intersect class="text-container" data-animation="slide-in-fwd-left">
                 <p>
@@ -45,15 +49,32 @@
                             type="textarea" required />
                     </BFormGroup>
 
+                    <BFormGroup class="d-flex">
+                        <input type="checkbox" id="agree" v-model="agreed" />
+                        <label for="agree" class="fs-6 ms-3">
+                            Die
+                            <button
+                                type="button"
+                                class="datenschutz-btn"
+                                @click="showModal = true"
+                            >
+                                Datenschutzerklärung
+                            </button>
+                            habe ich gelesen und verstanden.
+                        </label>
+                    </BFormGroup>
+
                     <span class="d-flex justify-content-end">
-                        <button v-if="!isMobile" type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center">
+                        <button v-if="!isMobile" type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center"
+                        :disabled="!agreed">
                             <p class="me-2 mb-0 kontakt-btn-text">Absenden</p>
                         </button>
-                        <b-button v-else variant="outline">
+                        <b-button v-else variant="outline" :disabled="!agreed" class="mt-2">
                             Absenden
                         </b-button>
                     </span>
                 </BForm>
+
             </div>
             <div  v-if="isMobile" class="text-container">
                 <p>
@@ -65,7 +86,8 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import DatenschutzModal from './reusables/DatenschutzModal.vue'
 import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
 
 const props = defineProps({
@@ -79,6 +101,8 @@ const form = reactive({
     address: '',
     message: ''
 })
+const agreed = ref(false);
+const showModal = ref(false);
 </script>
 
 <style lang="scss" scoped>
@@ -110,6 +134,16 @@ const form = reactive({
     .form-container {
         width: 50%;
         max-width: 100%;
+
+        .datenschutz-btn {
+            background-color: transparent;
+            border: none;
+            text-decoration: underline;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
     }
 
     .contact-column-wrapper {
