@@ -24,7 +24,12 @@
                 </p>
             </div>
             <div v-intersect class="form-container" data-animation="slide-in-fwd-right">
-                <Form @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
+                <Form
+                    :validation-schema="schema"
+                    @submit="onSubmit"
+                    @reset="onReset"
+                    class="w-100 contact-form p-3 p-md-5"
+                >
                     <!-- Name -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -81,7 +86,7 @@
                                 class="form-control"
                                 placeholder="Nachricht an uns ..."
                                 :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
-                            />
+                            ></textarea>
                             <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
                         </Field>
                     </div>
@@ -140,9 +145,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import DatenschutzModal from './reusables/DatenschutzModal.vue'
-import { useForm, Form, Field, useField } from 'vee-validate';
+import { Form, Field, useField } from 'vee-validate';
 import * as yup from 'yup';
 
 const props = defineProps({
@@ -150,28 +155,22 @@ const props = defineProps({
     isMobile: Boolean
 });
 
-const { handleSubmit, errors, values, resetForm } = useForm({
-    validationSchema: yup.object({
-        name: yup.string().required('Bitte gib deinen Namen ein'),
-        address: yup.string().required('Bitte gib deinen Wohnort ein'),
-        email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
-        message: yup.string().required('Bitte gib eine Nachricht an uns ein').min(20),
-        agree: yup.bool().oneOf([true], 'Du musst der Datenschutzerklärung zustimmen')
-    }),
-    initialValues: {
-        name: '',
-        address: '',
-        email: '',
-        message: '',
-        agree: false
-    }
-})
+const schema = yup.object({
+    name: yup.string().required('Bitte gib deinen Namen ein'),
+    address: yup.string().required('Bitte gib deinen Wohnort ein'),
+    email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
+    message: yup.string()
+        .required('Bitte gib eine Nachricht an uns ein')
+        .min(20, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
+    agree: yup.bool().oneOf([true], 'Du musst der Datenschutzerklärung zustimmen')
+});
+
 const { value: agreeValue } = useField('agree');
 const showModal = ref(false);
 
-const onSubmit = handleSubmit((formValues) => {
-    console.log(formValues, 'these are the values from the form');
-});
+const onSubmit = (values) => {
+    console.log(values, 'these are the values from the form');
+};
 
 function onReset() {
     resetForm()
