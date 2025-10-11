@@ -5,10 +5,7 @@
         <div class="page-title">
             <h1>Kontakt</h1>
         </div>
-        <DatenschutzModal
-            :isVisible="showModal"
-            @close="showModal = false"
-        />
+        <DatenschutzModal :isVisible="showModal" @close="showModal = false" />
         <div class="contact-column-wrapper w-75 d-flex align-items-center justify-content-center">
             <div v-intersect class="text-container" data-animation="slide-in-fwd-left">
                 <p>
@@ -27,54 +24,111 @@
                 </p>
             </div>
             <div v-intersect class="form-container" data-animation="slide-in-fwd-right">
-                <BForm @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
-                    <!-- Name input -->
-                    <BFormGroup id="input-group-1" label="Name" label-for="input-1" class="mb-3">
-                        <BFormInput id="input-1" v-model="form.name" required />
-                    </BFormGroup>
+                <Form @submit="onSubmit" @reset="onReset" class="w-100 contact-form p-3 p-md-5">
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <Field name="name" v-slot="{ field, meta, errors }">
+                            <input
+                                v-bind="field"
+                                id="name"
+                                type="text"
+                                class="form-control"
+                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
+                            />
+                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
+                        </Field>
+                    </div>
 
-                    <!-- Wohnort input -->
-                    <BFormGroup id="input-group-2" label="Wohnort" label-for="input-2" class="mb-3">
-                        <BFormInput id="input-2" v-model="form.address" />
-                    </BFormGroup>
+                    <!-- Wohnort -->
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Wohnort</label>
+                        <Field name="address" v-slot="{ field, meta, errors }">
+                            <input
+                                v-bind="field"
+                                id="address"
+                                type="text"
+                                class="form-control"
+                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
+                            />
+                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
+                        </Field>
+                    </div>
 
-                    <!-- Email input -->
-                    <BFormGroup id="input-group-3" label="Email Adresse" label-for="input-3" type="email" class="mb-3">
-                        <BFormInput id="input-3" v-model="form.email" placeholder="name@email.de" required />
-                    </BFormGroup>
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Adresse</label>
+                        <Field name="email" v-slot="{ field, meta, errors }">
+                            <input
+                                v-bind="field"
+                                id="email"
+                                type="email"
+                                class="form-control"
+                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
+                            />
+                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
+                        </Field>
+                    </div>
 
-                    <!-- Message -->
-                    <BFormGroup id="input-group-4" label="Nachricht an uns" label-for="input-4" class="mb-3">
-                        <BFormTextarea id="input-4" v-model="form.message" placeholder="Nachricht an uns ... "
-                            type="textarea" required />
-                    </BFormGroup>
+                    <!-- Nachricht -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Nachricht an uns</label>
+                        <Field name="message" v-slot="{ field, meta, errors }">
+                            <textarea
+                                v-bind="field"
+                                id="message"
+                                rows="4"
+                                class="form-control"
+                                placeholder="Nachricht an uns ..."
+                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
+                            />
+                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
+                        </Field>
+                    </div>
 
-                    <BFormGroup class="d-flex">
-                        <input type="checkbox" id="agree" v-model="agreed" />
-                        <label for="agree" class="fs-6 ms-3">
-                            Die
-                            <button
-                                type="button"
-                                class="datenschutz-btn"
-                                @click="showModal = true"
-                            >
+                    <!-- Datenschutz (checkbox) -->
+                    <div class="form-check mt-4">
+                        <Field name="agree" type="checkbox" v-slot="{ field, meta, errors }">
+                            <input
+                                type="checkbox"
+                                id="agree"
+                                class="form-check-input"
+                                v-model="agreeValue"
+                            />
+                            <label for="agree" class="form-check-label">
+                                Ich habe die
+                                <button type="button" class="btn btn-link p-0 datenschutz-btn align-baseline" @click="showModal = true">
                                 Datenschutzerklärung
-                            </button>
-                            habe ich gelesen und verstanden.
-                        </label>
-                    </BFormGroup>
+                                </button>
+                                gelesen und verstanden.
+                            </label>
 
-                    <span class="d-flex justify-content-end">
-                        <button v-if="!isMobile" type="submit" class="contact-btn mt-3 fs-6 d-flex align-items-center"
-                        :disabled="!agreed">
-                            <p class="me-2 mb-0 kontakt-btn-text">Absenden</p>
+                            <div v-if="errors.length" class="invalid-feedback d-block">{{ errors[0] }}</div>
+                            <div v-else class="text-muted small">Bitte stimme der Datenschutzerklärung zu, um fortzufahren.</div>
+                        </Field>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="d-flex justify-content-end">
+                        <button
+                            v-if="!isMobile"
+                            type="submit"
+                            class="btn btn-primary mt-3 fs-6 d-flex align-items-center"
+                            :disabled="!agreeValue"
+                        >
+                            <span class="me-2 mb-0">Absenden</span>
                         </button>
-                        <b-button v-else variant="outline" :disabled="!agreed" class="mt-2">
-                            Absenden
-                        </b-button>
-                    </span>
-                </BForm>
 
+                        <button
+                            v-else
+                            type="submit"
+                            class="btn btn-outline-primary mt-2"
+                            :disabled="!agreeValue"
+                        >
+                            Absenden
+                        </button>
+                    </div>
+                </Form>
             </div>
             <div  v-if="isMobile" class="text-container">
                 <p>
@@ -86,23 +140,43 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import { ref, computed } from 'vue';
 import DatenschutzModal from './reusables/DatenschutzModal.vue'
-import { BForm, BFormTextarea, BFormInput, BFormGroup } from 'bootstrap-vue-next';
+import { useForm, Form, Field, useField } from 'vee-validate';
+import * as yup from 'yup';
 
 const props = defineProps({
     activeLink: String,
     isMobile: Boolean
 });
 
-const form = reactive({
-    email: '',
-    name: '',
-    address: '',
-    message: ''
+const { handleSubmit, errors, values, resetForm } = useForm({
+    validationSchema: yup.object({
+        name: yup.string().required('Bitte gib deinen Namen ein'),
+        address: yup.string().required('Bitte gib deinen Wohnort ein'),
+        email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
+        message: yup.string().required('Bitte gib eine Nachricht an uns ein').min(20),
+        agree: yup.bool().oneOf([true], 'Du musst der Datenschutzerklärung zustimmen')
+    }),
+    initialValues: {
+        name: '',
+        address: '',
+        email: '',
+        message: '',
+        agree: false
+    }
 })
-const agreed = ref(false);
+const { value: agreeValue } = useField('agree');
 const showModal = ref(false);
+
+const onSubmit = handleSubmit((formValues) => {
+    console.log(formValues, 'these are the values from the form');
+});
+
+function onReset() {
+    resetForm()
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -262,6 +336,13 @@ const showModal = ref(false);
         .anfrage-text {
             font-size: 1.25rem;
         }
+    }
+
+    .text-danger {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+        display: block;
     }
 }
 
