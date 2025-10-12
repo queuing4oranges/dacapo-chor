@@ -81,34 +81,29 @@
                         <div v-if="errors.message" class="invalid-feedback">{{ errors.message }}</div>
                     </div>
 
-                    <!-- Datenschutz (checkbox) -->
-                    <!-- <div class="form-check mt-4">
-                        <Field name="agree" type="checkbox" v-slot="{ field, meta, errors }">
-                            <input
-                                type="checkbox"
-                                id="agree"
-                                class="form-check-input"
-                                v-model="agreeValue"
-                            />
-                            <label for="agree" class="form-check-label">
-                                Ich habe die
-                                <button type="button" class="btn btn-link p-0 datenschutz-btn align-baseline" @click="showModal = true">
-                                Datenschutzerklärung
-                                </button>
-                                gelesen und verstanden.
-                            </label>
+                    <div class="form-check mt-4">
+                        <input
+                            v-model="agree"
+                            v-bind="agreeAttrs"
+                            type="checkbox"
+                            id="agree"
+                            class="form-check-input"
+                        />
+                        <label for="agree" class="form-check-label">
+                            Ich habe die
+                            <button type="button" class="btn btn-link p-0 datenschutz-btn align-baseline" @click="showModal = true">
+                            Datenschutzerklärung
+                            </button>
+                            gelesen und verstanden.
+                        </label>
+                        <div v-if="errors.agree" class="text-muted small">Bitte stimme der Datenschutzerklärung zu, um fortzufahren.</div>
+                    </div>
 
-                            <div v-if="errors.length" class="invalid-feedback d-block">{{ errors[0] }}</div>
-                            <div v-if="!agreeValue" class="text-muted small">Bitte stimme der Datenschutzerklärung zu, um fortzufahren.</div>
-                        </Field>
-                    </div> -->
-
-                    <!-- Submit -->
                     <div class="d-flex justify-content-end">
                         <button
                             v-if="!isMobile"
                             type="submit"
-                            class="btn btn-primary mt-3 fs-6 d-flex align-items-center"
+                            class="contact-btn mt-3 fs-6 d-flex align-items-center"
                         >
                             <span class="me-2 mb-0">Absenden</span>
                         </button>
@@ -117,7 +112,6 @@
                             v-else
                             type="submit"
                             class="btn btn-outline-primary mt-2"
-                            :disabled="!agreeValue"
                         >
                             Absenden
                         </button>
@@ -146,14 +140,14 @@ const props = defineProps({
 
 const showModal = ref(false);
 
-const { values, errors, defineField, handleSubmit } = useForm({
+const { errors, defineField, handleSubmit } = useForm({
   validationSchema: yup.object({
     name: yup.string().required("Bitte gib einen Namen ein"),
     address: yup.string().required('Bitte gib deinen Wohnort ein'),
     email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
     message: yup.string().required('Bitte gib eine Nachricht an uns ein'),
-        // .min(20, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
-    // agree: yup.bool().oneOf([true], 'Du musst der Datenschutzerklärung zustimmen')
+        // .min(10, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
+    agree: yup.bool().oneOf([true]).required('Du musst der Datenschutzerklärung zustimmen')
   }),
 });
 
@@ -161,16 +155,12 @@ const [name, nameAttrs] = defineField('name');
 const [address, addressAttrs] = defineField('address');
 const [email, emailAttrs] = defineField('email');
 const [message, messageAttrs] = defineField('message');
+const [agree, agreeAttrs] = defineField('agree');
 
 const onSubmit = handleSubmit((values, { resetForm }) => {
   console.log(values);
   resetForm();
 });
-
-
-// const { value: agreeValue } = useField('agree');
-
-
 
 </script>
 
