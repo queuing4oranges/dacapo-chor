@@ -6,6 +6,26 @@
             <h1>Kontakt</h1>
         </div>
         <DatenschutzModal :isVisible="showModal" @close="showModal = false" />
+        <div class="toast-container position-fixed top-0 start-0 p-3">
+            <div
+                id="liveToast"
+                class="fs-6 toast align-items-center text-bg-success border-0"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                ref="toastRef"
+            >
+                <div class="d-flex">
+                    <div class="toast-body">{{ toastMessage }}</div>
+                    <button
+                    type="button"
+                    class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast"
+                    aria-label="Close"
+                    ></button>
+                </div>
+            </div>
+        </div>
         <div class="contact-column-wrapper w-75 d-flex align-items-center justify-content-center">
             <div v-intersect class="text-container" data-animation="slide-in-fwd-left">
                 <p>
@@ -143,6 +163,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from 'vee-validate';
+import { Toast } from 'bootstrap';
 import DatenschutzModal from './reusables/DatenschutzModal.vue'
 import * as yup from 'yup';
 import emailjs from '@emailjs/browser';
@@ -151,7 +172,6 @@ import emailjs from '@emailjs/browser';
 const serviceId = import.meta.env.VITE_SERVICE_ID;
 const templateId = import.meta.env.VITE_TEMPLATE_ID;
 const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-const privateKey = import.meta.env.VITE_PRIVATE_KEY;
 
 const props = defineProps({
     activeLink: String,
@@ -177,6 +197,15 @@ const [email, emailAttrs] = defineField('email');
 const [message, messageAttrs] = defineField('message');
 const [agree, agreeAttrs] = defineField('agree');
 
+const toastRef = ref(null);
+const toastMessage = ref('');
+
+function showToast(msg) {
+  toastMessage.value = msg;
+  const toast = new Toast(toastRef.value);
+  toast.show();
+}
+
 const onSubmit = handleSubmit(async (values, { resetForm }) => {
   console.log(values);
   try {
@@ -191,11 +220,11 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
         },
         { publicKey }
     );
-    if (response) {
-        console.log(response, 'this is the response here')
+    if (response.status === 200) {
+        showToast('Danke für deine Nachricht')
     }
-  } catch {
-    //
+  } catch (e) {
+        console.warn(e);
   }
   resetForm();
 });
