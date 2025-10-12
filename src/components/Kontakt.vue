@@ -24,75 +24,65 @@
                 </p>
             </div>
             <div v-intersect class="form-container" data-animation="slide-in-fwd-right">
-                <Form
-                    :validation-schema="schema"
-                    @submit="onSubmit"
+                <form
+                    @submit.prevent="onSubmit"
                     @reset="onReset"
                     class="w-100 contact-form p-3 p-md-5"
                 >
-                    <!-- Name -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <Field name="name" v-slot="{ field, meta, errors }">
-                            <input
-                                v-bind="field"
-                                id="name"
-                                type="text"
-                                class="form-control"
-                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
-                            />
-                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
-                        </Field>
+                        <input
+                            v-model="name"
+                            v-bind="nameAttrs"
+                            id="name"
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid': errors.name }"
+                        />
+                        <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
                     </div>
 
-                    <!-- Wohnort -->
                     <div class="mb-3">
                         <label for="address" class="form-label">Wohnort</label>
-                        <Field name="address" v-slot="{ field, meta, errors }">
-                            <input
-                                v-bind="field"
-                                id="address"
-                                type="text"
-                                class="form-control"
-                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
-                            />
-                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
-                        </Field>
+                        <input
+                            v-model="address"
+                            v-bind="addressAttrs"
+                            id="address"
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid': errors.address }"
+                        />
+                        <div v-if="errors.address" class="invalid-feedback">{{ errors.address }}</div>
                     </div>
 
-                    <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Adresse</label>
-                        <Field name="email" v-slot="{ field, meta, errors }">
                             <input
-                                v-bind="field"
+                                v-model="email"
+                                v-bind="emailAttrs"
                                 id="email"
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
+                                :class="{ 'is-invalid': errors.email }"
                             />
-                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
-                        </Field>
+                            <div v-if="errors.email" class="invalid-feedback">{{ errors.email }}</div>
                     </div>
 
-                    <!-- Nachricht -->
                     <div class="mb-3">
                         <label for="message" class="form-label">Nachricht an uns</label>
-                        <Field name="message" v-slot="{ field, meta, errors }">
-                            <textarea
-                                v-bind="field"
-                                id="message"
-                                rows="4"
-                                class="form-control"
-                                placeholder="Nachricht an uns ..."
-                                :class="{ 'is-invalid': meta.touched && errors.length, 'is-valid': meta.touched && !errors.length }"
-                            ></textarea>
-                            <div v-if="errors.length" class="invalid-feedback">{{ errors[0] }}</div>
-                        </Field>
+                        <textarea
+                            v-model="message"
+                            v-bind="messageAttrs"
+                            id="message"
+                            type="textarea"
+                            class="form-control"
+                            :class="{ 'is-invalid': errors.message }"
+                        ></textarea>
+                        <div v-if="errors.message" class="invalid-feedback">{{ errors.message }}</div>
                     </div>
 
                     <!-- Datenschutz (checkbox) -->
-                    <div class="form-check mt-4">
+                    <!-- <div class="form-check mt-4">
                         <Field name="agree" type="checkbox" v-slot="{ field, meta, errors }">
                             <input
                                 type="checkbox"
@@ -109,9 +99,9 @@
                             </label>
 
                             <div v-if="errors.length" class="invalid-feedback d-block">{{ errors[0] }}</div>
-                            <div v-else class="text-muted small">Bitte stimme der Datenschutzerklärung zu, um fortzufahren.</div>
+                            <div v-if="!agreeValue" class="text-muted small">Bitte stimme der Datenschutzerklärung zu, um fortzufahren.</div>
                         </Field>
-                    </div>
+                    </div> -->
 
                     <!-- Submit -->
                     <div class="d-flex justify-content-end">
@@ -119,7 +109,6 @@
                             v-if="!isMobile"
                             type="submit"
                             class="btn btn-primary mt-3 fs-6 d-flex align-items-center"
-                            :disabled="!agreeValue"
                         >
                             <span class="me-2 mb-0">Absenden</span>
                         </button>
@@ -133,7 +122,7 @@
                             Absenden
                         </button>
                     </div>
-                </Form>
+                </form>
             </div>
             <div  v-if="isMobile" class="text-container">
                 <p>
@@ -147,7 +136,7 @@
 <script setup>
 import { ref } from 'vue';
 import DatenschutzModal from './reusables/DatenschutzModal.vue'
-import { Form, Field, useField } from 'vee-validate';
+import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 
 const props = defineProps({
@@ -155,26 +144,33 @@ const props = defineProps({
     isMobile: Boolean
 });
 
-const schema = yup.object({
-    name: yup.string().required('Bitte gib deinen Namen ein'),
-    address: yup.string().required('Bitte gib deinen Wohnort ein'),
-    email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
-    message: yup.string()
-        .required('Bitte gib eine Nachricht an uns ein')
-        .min(20, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
-    agree: yup.bool().oneOf([true], 'Du musst der Datenschutzerklärung zustimmen')
-});
-
-const { value: agreeValue } = useField('agree');
 const showModal = ref(false);
 
-const onSubmit = (values) => {
-    console.log(values, 'these are the values from the form');
-};
+const { values, errors, defineField, handleSubmit } = useForm({
+  validationSchema: yup.object({
+    name: yup.string().required("Bitte gib einen Namen ein"),
+    address: yup.string().required('Bitte gib deinen Wohnort ein'),
+    email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
+    message: yup.string().required('Bitte gib eine Nachricht an uns ein'),
+        // .min(20, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
+    // agree: yup.bool().oneOf([true], 'Du musst der Datenschutzerklärung zustimmen')
+  }),
+});
 
-function onReset() {
-    resetForm()
-}
+const [name, nameAttrs] = defineField('name');
+const [address, addressAttrs] = defineField('address');
+const [email, emailAttrs] = defineField('email');
+const [message, messageAttrs] = defineField('message');
+
+const onSubmit = handleSubmit((values, { resetForm }) => {
+  console.log(values);
+  resetForm();
+});
+
+
+// const { value: agreeValue } = useField('agree');
+
+
 
 </script>
 
@@ -337,8 +333,8 @@ function onReset() {
         }
     }
 
-    .text-danger {
-        color: red;
+    .invalid-feedback {
+        color: white;
         font-size: 0.9rem;
         margin-top: 0.25rem;
         display: block;
