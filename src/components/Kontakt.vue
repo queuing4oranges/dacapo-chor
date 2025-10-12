@@ -29,7 +29,7 @@
                     @reset="onReset"
                     class="w-100 contact-form p-3 p-md-5"
                 >
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label for="name" class="form-label">Name</label>
                         <input
                             v-model="name"
@@ -37,12 +37,14 @@
                             id="name"
                             type="text"
                             class="form-control"
-                            :class="{ 'is-invalid': errors.name }"
+                            :class="{ 'is-invalid': errors.name, 'is-valid': !errors.name && name }"
                         />
-                        <div v-if="errors.name" class="invalid-feedback">{{ errors.name }}</div>
+                        <div class="invalid-feedback" :class="{ 'd-block': errors.name, 'invisible': !errors.name }">
+                            {{ errors.name || '' }}
+                        </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label for="address" class="form-label">Wohnort</label>
                         <input
                             v-model="address"
@@ -50,25 +52,29 @@
                             id="address"
                             type="text"
                             class="form-control"
-                            :class="{ 'is-invalid': errors.address }"
+                            :class="{ 'is-invalid': errors.address, 'is-valid': !errors.address && address }"
                         />
-                        <div v-if="errors.address" class="invalid-feedback">{{ errors.address }}</div>
+                        <div class="invalid-feedback" :class="{ 'd-block': errors.address, 'invisible': !errors.address }">
+                            {{ errors.address || '' }}
+                        </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label for="email" class="form-label">Email Adresse</label>
-                            <input
-                                v-model="email"
-                                v-bind="emailAttrs"
-                                id="email"
-                                type="text"
-                                class="form-control"
-                                :class="{ 'is-invalid': errors.email }"
-                            />
-                            <div v-if="errors.email" class="invalid-feedback">{{ errors.email }}</div>
+                        <input
+                            v-model="email"
+                            v-bind="emailAttrs"
+                            id="email"
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid': errors.email, 'is-valid': !errors.email && email }"
+                        />
+                        <div class="invalid-feedback" :class="{ 'd-block': errors.email, 'invisible': !errors.email }">
+                            {{ errors.email || '' }}
+                        </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 form-group">
                         <label for="message" class="form-label">Nachricht an uns</label>
                         <textarea
                             v-model="message"
@@ -76,12 +82,14 @@
                             id="message"
                             type="textarea"
                             class="form-control"
-                            :class="{ 'is-invalid': errors.message }"
+                            :class="{ 'is-invalid': errors.message, 'is-valid': !errors.message && message }"
                         ></textarea>
-                        <div v-if="errors.message" class="invalid-feedback">{{ errors.message }}</div>
+                        <div class="invalid-feedback" :class="{ 'd-block': errors.message, 'invisible': !errors.message }">
+                            {{ errors.message || '' }}
+                        </div>
                     </div>
 
-                    <div class="form-check mt-4">
+                    <div class="form-check mt-4 form-group">
                         <input
                             v-model="agree"
                             v-bind="agreeAttrs"
@@ -96,7 +104,12 @@
                             </button>
                             gelesen und verstanden.
                         </label>
-                        <div v-if="errors.agree" class="text-muted small">Bitte stimme der Datenschutzerklärung zu, um fortzufahren.</div>
+                        <div
+                            class="text-muted small"
+                            :class="{ 'd-block': errors.agree, 'invisible': !errors.agree }"
+                        >
+                            {{ errors.agree || ' ' }}
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-end">
@@ -105,13 +118,13 @@
                             type="submit"
                             class="contact-btn mt-3 fs-6 d-flex align-items-center"
                         >
-                            <span class="me-2 mb-0">Absenden</span>
+                            <p class="me-2 mb-0 kontakt-btn-text">Absenden</p>
                         </button>
 
                         <button
                             v-else
                             type="submit"
-                            class="btn btn-outline-primary mt-2"
+                            class="btn btn-outline"
                         >
                             Absenden
                         </button>
@@ -142,12 +155,12 @@ const showModal = ref(false);
 
 const { errors, defineField, handleSubmit } = useForm({
   validationSchema: yup.object({
-    name: yup.string().required("Bitte gib einen Namen ein"),
+    name: yup.string().required("Bitte gib deinen Namen ein"),
     address: yup.string().required('Bitte gib deinen Wohnort ein'),
     email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
-    message: yup.string().required('Bitte gib eine Nachricht an uns ein'),
+    message: yup.string().required('Bitte gib deine Nachricht an uns ein'),
         // .min(10, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
-    agree: yup.bool().oneOf([true]).required('Du musst der Datenschutzerklärung zustimmen')
+    agree: yup.bool().oneOf([true]).required('Bitte stimme der Datenschutzerklärung zu')
   }),
 });
 
@@ -193,11 +206,13 @@ const onSubmit = handleSubmit((values, { resetForm }) => {
     .form-container {
         width: 50%;
         max-width: 100%;
+        font-size: 16px;
 
         .datenschutz-btn {
             background-color: transparent;
             border: none;
             text-decoration: underline;
+            color: $logo-color;
 
             &:hover {
                 opacity: 0.8;
@@ -241,7 +256,7 @@ const onSubmit = handleSubmit((values, { resetForm }) => {
         justify-items: center;
         color: black;
 
-        .b-form-group {
+        .form-group {
             width: 75%;
         }
 
@@ -328,6 +343,7 @@ const onSubmit = handleSubmit((values, { resetForm }) => {
         font-size: 0.9rem;
         margin-top: 0.25rem;
         display: block;
+        min-height: 1.5em;
     }
 }
 
@@ -374,7 +390,7 @@ const onSubmit = handleSubmit((values, { resetForm }) => {
             font-size: 1rem !important;
         }
 
-        .contact-form .b-form-group {
+        .contact-form .form-group {
             width: 100%;
         }
 
