@@ -142,9 +142,16 @@
 
 <script setup>
 import { ref } from 'vue';
-import DatenschutzModal from './reusables/DatenschutzModal.vue'
 import { useForm } from 'vee-validate';
+import DatenschutzModal from './reusables/DatenschutzModal.vue'
 import * as yup from 'yup';
+import emailjs from '@emailjs/browser';
+
+// Email.js credentials
+const serviceId = import.meta.env.VITE_SERVICE_ID;
+const templateId = import.meta.env.VITE_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+const privateKey = import.meta.env.VITE_PRIVATE_KEY;
 
 const props = defineProps({
     activeLink: String,
@@ -170,8 +177,26 @@ const [email, emailAttrs] = defineField('email');
 const [message, messageAttrs] = defineField('message');
 const [agree, agreeAttrs] = defineField('agree');
 
-const onSubmit = handleSubmit((values, { resetForm }) => {
+const onSubmit = handleSubmit(async (values, { resetForm }) => {
   console.log(values);
+  try {
+    const response = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+            name: values.name,
+            address: values.address,
+            email: values.email,
+            message: values.message
+        },
+        { publicKey }
+    );
+    if (response) {
+        console.log(response, 'this is the response here')
+    }
+  } catch {
+    //
+  }
   resetForm();
 });
 
