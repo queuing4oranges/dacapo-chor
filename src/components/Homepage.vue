@@ -18,7 +18,7 @@ import HeroTitle from './HeroTitle.vue';
 <style lang="scss" scoped>
 .homepage-container {
     min-height: 100vh;
-    background-image: url('@/assets/Gruppenbild.png');
+    background-image: url('@/assets/Gruppenbild.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

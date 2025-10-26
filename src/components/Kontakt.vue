@@ -49,7 +49,7 @@
                     @reset="onReset"
                     class="w-100 contact-form p-3 p-md-5"
                 >
-                    <div class="mb-3 form-group">
+                    <div class="mb-1 form-group">
                         <label for="name" class="form-label">Name</label>
                         <input
                             v-model="name"
@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 form-group">
+                    <div class="mb-1 form-group">
                         <label for="address" class="form-label">Wohnort</label>
                         <input
                             v-model="address"
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 form-group">
+                    <div class="mb-1 form-group">
                         <label for="email" class="form-label">Email Adresse</label>
                         <input
                             v-model="email"
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 form-group">
+                    <div class="mb-1 form-group">
                         <label for="message" class="form-label">Nachricht an uns</label>
                         <textarea
                             v-model="message"
@@ -109,7 +109,7 @@
                         </div>
                     </div>
 
-                    <div class="form-check mt-4 form-group">
+                    <div class="form-check mt-2 form-group">
                         <input
                             v-model="agree"
                             v-bind="agreeAttrs"
@@ -132,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-end">
+                    <div class="mt-4 d-flex justify-content-end">
                         <button
                             v-if="!isMobile"
                             type="submit"
@@ -186,7 +186,6 @@ const { errors, defineField, handleSubmit } = useForm({
     address: yup.string().required('Bitte gib deinen Wohnort ein'),
     email: yup.string().required('Bitte gib deine E-Mail Adresse ein'),
     message: yup.string().required('Bitte gib deine Nachricht an uns ein'),
-        // .min(10, 'Die Nachricht muss mindestens 20 Zeichen lang sein'),
     agree: yup.bool().oneOf([true]).required('Bitte stimme der Datenschutzerklärung zu')
   }),
 });

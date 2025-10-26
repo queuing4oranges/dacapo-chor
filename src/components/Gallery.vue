@@ -37,11 +37,10 @@ import GalleryCarousel from "./reusables/GalleryCarousel.vue"
 .gallery-container::before {
     content: "";
     position: absolute;
-    background-image: url("@/assets/mitglieder-bg-overlay.svg");
+    background-image: url("@/assets/gallery-bg.webp");
     inset: 0;
     background-size: cover;
     background-position-y: top;
-    opacity: 0.3;
     z-index: -1;
     pointer-events: none;
     min-height: 100vh;
