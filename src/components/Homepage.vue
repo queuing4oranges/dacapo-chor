@@ -1,11 +1,7 @@
 <template>
     <div class="homepage-container d-flex flex-column justify-content-center align-items-center">
         <HeroTitle />
-        <HeroSquares
-            :active-link="activeLink"
-            :is-mobile="isMobile"
-            @update:active-link="setActiveLink"
-        />
+        <HeroSquares />
     </div>
 </template>
 

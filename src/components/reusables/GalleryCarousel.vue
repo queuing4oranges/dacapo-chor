@@ -14,14 +14,11 @@
         <!-- Custom accessible indicators -->
         <div class="carousel-indicators" role="tablist">
             <button
-            v-for="(_, index) in slides"
-            :key="index"
-            type="button"
-            class="indicator-btn"
-            :aria-label="`Go to slide ${index + 1} of ${slides.length}`"
-            :aria-current="currentSlide === index ? 'true' : 'false'"
-            @click="setSlide(index)"
-            :class="{ active: currentSlide === index }"
+                v-for="(_, index) in cards"
+                :key="index"
+                type="button"
+                class="indicator-btn"
+                :aria-label="`Go to slide ${index + 1} of ${cards.length}`"
             ></button>
         </div>
 

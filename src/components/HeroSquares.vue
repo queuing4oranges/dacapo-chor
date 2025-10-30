@@ -27,7 +27,7 @@
 import link1 from "@/assets/piano.png";
 import link2 from "@/assets/noten.png";
 import link3 from "@/assets/tuer.png";
-import link4 from "@/assets/haus.png";
+import link4 from "@/assets/gitarre.png";
 
 const props = defineProps({
     activeLink: String,

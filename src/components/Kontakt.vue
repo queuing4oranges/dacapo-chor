@@ -33,7 +33,7 @@
                     Wenn du Interesse an einer unverbindlichen Schnupperstunde hast, melde dich bei uns!
                 </p>
                     <br>
-                        <strong class="proben-text fs-5">Wir proben immer mittwochs von 19.00 bis 21.15 Uhr.</strong>
+                        <strong class="proben-text fs-5">Wir proben immer mittwochs von 19.00 bis 21.00 Uhr.</strong>
                     <br>
                 <p>
                     Du möchtest uns buchen oder hast ein anderes Anliegen? Nutze auch dafür gern unser Kontaktformular!
@@ -404,7 +404,6 @@ const onSubmit = handleSubmit(async (values, { resetForm }) => {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("@/assets/haus-bg.png");
     background-size: cover;
     background-position-y: center;
     opacity: 0.4;
