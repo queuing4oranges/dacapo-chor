@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="mb-1 form-group">
-                        <label for="email" class="form-label">Email Adresse</label>
+                        <label for="email" class="form-label">E-Mail-Adresse</label>
                         <input
                             v-model="email"
                             v-bind="emailAttrs"

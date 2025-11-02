@@ -64,7 +64,6 @@ const songs = [
 
 const auftritte = [
     { place: "AWO Wohnstätten Löbau" },
-    { place: "ASB-Seniorenpflegeheim Obercunnersdorf" },
     { place: "„Mitmachchor“ im Rahmen des „Lebendigen Adventskalender“ bei Löbau lebt e.V." },
     { place: "ASB Pflegeheim Obercunnersdorf" },
     { place: "Hospiz Herrnhut" },
